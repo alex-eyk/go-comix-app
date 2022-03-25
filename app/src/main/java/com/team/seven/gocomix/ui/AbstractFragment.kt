@@ -15,6 +15,7 @@ abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
 ) : Fragment() {
 
     protected abstract val viewModel: VM
+
     protected lateinit var binding: B
 
     override fun onCreateView(
