@@ -7,9 +7,9 @@ import com.team.seven.gocomix.ui.AbstractFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : AbstractFragment<FragmentHomeBinding>(
+class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     R.layout.fragment_home
 ) {
 
-    private val viewModel: HomeViewModel by viewModels()
+    override val viewModel: HomeViewModel by viewModels()
 }

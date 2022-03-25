@@ -5,9 +5,9 @@ import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentProfileBinding
 import com.team.seven.gocomix.ui.AbstractFragment
 
-class ProfileFragment : AbstractFragment<FragmentProfileBinding>(
+class ProfileFragment : AbstractFragment<FragmentProfileBinding, ProfileViewModel>(
     R.layout.fragment_profile
 ) {
 
-    private val viewModel: ProfileViewModel by viewModels()
+    override val viewModel: ProfileViewModel by viewModels()
 }
