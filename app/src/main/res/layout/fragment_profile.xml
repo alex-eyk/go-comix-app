@@ -4,8 +4,8 @@
     <data>
 
         <variable
-                name="viewModel"
-                type="com.team.seven.gocomix.ui.home.HomeViewModel" />
+                name="viewModule"
+                type="com.team.seven.gocomix.ui.profile.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
