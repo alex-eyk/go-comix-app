@@ -25,7 +25,6 @@ abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
     ): View {
         this.binding = DataBindingUtil
             .inflate(inflater, layoutRes, container, false)
-        this.binding.setVariable(BR.viewModel, viewModel)
         onBindingCreated()
         return binding.root
     }
