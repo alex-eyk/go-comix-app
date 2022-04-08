@@ -14,7 +14,7 @@
             app:layout_constraintGuide_begin="@dimen/edge_margin" />
 
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/bottom_guideline"
+            android:id="@+id/top_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -49,7 +49,7 @@
             android:id="@+id/title_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/components_margin"
+            android:layout_marginBottom="@dimen/components_small_margin"
             android:paddingTop="@dimen/edge_margin"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
             app:layout_constraintBottom_toTopOf="@id/description_text"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_menu"
             app:layout_constraintEnd_toStartOf="@+id/end_guideline"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+            app:layout_constraintBottom_toTopOf="@+id/top_guideline"
             android:contentDescription="@string/open_comix_description"
             android:id="@+id/floatingActionButton" />
 
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/edge_margin"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
-            app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+            app:layout_constraintBottom_toTopOf="@id/top_guideline"
             app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
             tools:text="Длинное описание комикса, возможно даже на несколько строк" />
 

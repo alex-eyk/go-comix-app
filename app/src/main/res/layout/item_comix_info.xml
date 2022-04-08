@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:elevation="1dp"
+                app:layout_constraintGuide_begin="@dimen/edge_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/top_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:elevation="1dp"
+                app:layout_constraintGuide_begin="@dimen/edge_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:elevation="1dp"
+                app:layout_constraintGuide_end="@dimen/edge_margin" />
+
+        <ImageView
+                android:id="@+id/comix_info_profile_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/outline_profile_image"
+                android:contentDescription="@string/profile_image"
+                app:clipToOutline="@{true}"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toTopOf="@id/top_guideline"
+                app:layout_constraintBottom_toBottomOf="@id/comix_info_subscribers_text" />
+
+        <TextView
+                style="@style/Subtitle"
+                android:id="@+id/comix_info_author_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/components_medium_margin"
+                app:layout_constraintStart_toEndOf="@id/comix_info_profile_image"
+                app:layout_constraintTop_toTopOf="@id/top_guideline"
+                tools:text="Автор комикса" />
+
+        <TextView
+                style="@style/Text"
+                android:id="@+id/comix_info_subscribers_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/components_small_margin"
+                app:layout_constraintTop_toBottomOf="@id/comix_info_author_text"
+                app:layout_constraintStart_toStartOf="@id/comix_info_author_text"
+                tools:text="192 подписчика" />
+
+        <TextView
+                style="@style/Title"
+                android:id="@+id/comix_info_name_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/components_medium_margin"
+                app:layout_constraintTop_toBottomOf="@id/comix_info_subscribers_text"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintEnd_toStartOf="@id/end_guideline"
+                tools:text="Название комикса" />
+
+        <TextView
+                style="@style/Text"
+                android:id="@+id/comix_info_description_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/components_small_margin"
+                tools:text="Описание комикса, длинное описание комикса, возможно на несколько строк"
+                app:layout_constraintTop_toBottomOf="@id/comix_info_name_text"
+                app:layout_constraintEnd_toStartOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline" />
+
+        <RatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:rating="4.5"
+                android:isIndicator="true"
+                android:stepSize="0.5"
+                android:layout_marginTop="@dimen/components_medium_margin"
+                app:layout_constraintTop_toBottomOf="@+id/comix_info_description_text"
+                app:layout_constraintStart_toStartOf="@+id/start_guideline"
+                android:id="@+id/comix_info_rating_bar" />
+
+        <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/components_small_margin"
+                tools:text="Оценить"
+                app:chipIcon="@drawable/ic_thumbs_up_down"
+                app:layout_constraintTop_toBottomOf="@+id/comix_info_rating_bar"
+                app:layout_constraintStart_toStartOf="@+id/start_guideline"
+                android:id="@+id/comix_info_rate_chip" />
+
+        <com.google.android.material.chip.Chip
+                android:id="@+id/comix_info_save_chip"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Сохранить"
+                app:chipIcon="@drawable/ic_bookmark"
+                android:layout_marginStart="@dimen/components_small_margin"
+                app:layout_constraintTop_toTopOf="@+id/comix_info_rate_chip"
+                app:layout_constraintStart_toEndOf="@+id/comix_info_rate_chip" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
