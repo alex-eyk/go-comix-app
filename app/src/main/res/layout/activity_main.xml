@@ -20,8 +20,9 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation_view"
+                style="@style/Widget.Design.BottomNavigationView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/bottom_nav_view_height"
+                android:layout_height="wrap_content"
                 app:menu="@menu/bottom_navigation_items"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
