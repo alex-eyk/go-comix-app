@@ -47,8 +47,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/comix_info_subscribers_text" />
 
         <TextView
-                style="@style/Subtitle"
                 android:id="@+id/comix_info_author_text"
+                style="@style/Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/components_medium_margin"
@@ -57,8 +57,8 @@
                 tools:text="Автор комикса" />
 
         <TextView
-                style="@style/Text"
                 android:id="@+id/comix_info_subscribers_text"
+                style="@style/Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/components_small_margin"
@@ -67,8 +67,8 @@
                 tools:text="192 подписчика" />
 
         <TextView
-                style="@style/Title"
                 android:id="@+id/comix_info_name_text"
+                style="@style/Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/components_medium_margin"
@@ -78,48 +78,48 @@
                 tools:text="Название комикса" />
 
         <TextView
-                style="@style/Text"
                 android:id="@+id/comix_info_description_text"
+                style="@style/Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/components_small_margin"
-                tools:text="Описание комикса, длинное описание комикса, возможно на несколько строк"
                 app:layout_constraintTop_toBottomOf="@id/comix_info_name_text"
                 app:layout_constraintEnd_toStartOf="@id/end_guideline"
-                app:layout_constraintStart_toStartOf="@id/start_guideline" />
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                tools:text="Описание комикса, длинное описание комикса, возможно на несколько строк" />
 
         <RatingBar
+                android:id="@+id/comix_info_rating_bar"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:rating="4.5"
+                android:layout_marginTop="@dimen/components_medium_margin"
                 android:isIndicator="true"
                 android:stepSize="0.5"
-                android:layout_marginTop="@dimen/components_medium_margin"
-                app:layout_constraintTop_toBottomOf="@+id/comix_info_description_text"
-                app:layout_constraintStart_toStartOf="@+id/start_guideline"
-                android:id="@+id/comix_info_rating_bar" />
+                app:layout_constraintTop_toBottomOf="@id/comix_info_description_text"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                tools:rating="4.5" />
 
         <com.google.android.material.chip.Chip
+                android:id="@+id/comix_info_rate_chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/components_small_margin"
-                tools:text="Оценить"
                 app:chipIcon="@drawable/ic_thumbs_up_down"
-                app:layout_constraintTop_toBottomOf="@+id/comix_info_rating_bar"
-                app:layout_constraintStart_toStartOf="@+id/start_guideline"
-                android:id="@+id/comix_info_rate_chip" />
+                app:layout_constraintTop_toBottomOf="@id/comix_info_rating_bar"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                tools:text="Оценить" />
 
         <com.google.android.material.chip.Chip
                 android:id="@+id/comix_info_save_chip"
                 style="@style/Widget.Material3.Chip.Assist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Сохранить"
-                app:chipIcon="@drawable/ic_bookmark"
                 android:layout_marginStart="@dimen/components_small_margin"
-                app:layout_constraintTop_toTopOf="@+id/comix_info_rate_chip"
-                app:layout_constraintStart_toEndOf="@+id/comix_info_rate_chip" />
+                app:chipIcon="@drawable/ic_bookmark"
+                app:layout_constraintTop_toTopOf="@id/comix_info_rate_chip"
+                app:layout_constraintStart_toEndOf="@id/comix_info_rate_chip"
+                tools:text="Сохранить" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
