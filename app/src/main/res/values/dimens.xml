@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="bottom_nav_view_height">56dp</dimen>
+    <dimen name="edge_margin">16dp</dimen>
+    <dimen name="components_margin">8dp</dimen>
+
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="content_text_size">14sp</dimen>
+
+    <dimen name="title_letter_spacing">0.02</dimen>
+    <dimen name="title_shadow_d">3</dimen>
+    <dimen name="title_shadow_radius">10</dimen>
 </resources>

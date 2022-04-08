@@ -3,4 +3,6 @@
     <string name="menu_home">Главная</string>
     <string name="menu_favourite">Избранное</string>
     <string name="menu_profile">Профиль</string>
+    <string name="comix_cover">Обложка комикса</string>
+    <string name="open_comix_description">Открыть описание комикса</string>
 </resources>
