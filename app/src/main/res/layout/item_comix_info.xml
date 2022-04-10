@@ -88,14 +88,13 @@
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 tools:text="Описание комикса, длинное описание комикса, возможно на несколько строк" />
 
-        <RatingBar
+        <com.team.seven.gocomix.ui.widget.VectorRatingBar
                 android:id="@+id/comix_info_rating_bar"
-                style="?android:attr/ratingBarStyleSmall"
+                style="@style/RoundRatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/components_medium_margin"
                 android:isIndicator="true"
-                android:stepSize="0.5"
                 app:layout_constraintTop_toBottomOf="@id/comix_info_description_text"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 tools:rating="4.5" />
