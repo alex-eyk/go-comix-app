@@ -72,13 +72,15 @@ class VectorRatingBar @JvmOverloads constructor(
             val shapeDrawable = ShapeDrawable(drawableShape)
             val bitmapShader = BitmapShader(
                 tileBitmap,
-                Shader.TileMode.REPEAT, Shader.TileMode.CLAMP
+                Shader.TileMode.REPEAT,
+                Shader.TileMode.CLAMP
             )
             shapeDrawable.paint.shader = bitmapShader
             shapeDrawable.paint.colorFilter = drawable.paint.colorFilter
             return if (clip)
                 ClipDrawable(
-                    shapeDrawable, Gravity.START,
+                    shapeDrawable,
+                    Gravity.START,
                     ClipDrawable.HORIZONTAL
                 )
             else

@@ -16,7 +16,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:elevation="1dp"
                 app:layout_constraintGuide_begin="@dimen/edge_margin" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -24,7 +23,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:elevation="1dp"
                 app:layout_constraintGuide_begin="@dimen/edge_margin" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -32,7 +30,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:elevation="1dp"
                 app:layout_constraintGuide_end="@dimen/edge_margin" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -40,7 +37,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:elevation="1dp"
                 app:layout_constraintGuide_end="@dimen/edge_margin" />
 
         <TextView
@@ -48,10 +44,10 @@
                 style="@style/Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Название комикса"
                 app:layout_constraintTop_toTopOf="@+id/top_guideline"
                 app:layout_constraintStart_toStartOf="@+id/start_guideline"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline" />
+                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                tools:text="Название комикса" />
 
         <TextView
                 android:id="@+id/rate_description"
