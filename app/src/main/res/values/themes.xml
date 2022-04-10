@@ -9,7 +9,9 @@
         <item name="colorSecondaryContainer">@color/purple_800</item>
         <item name="colorOnSecondary">@color/purple_900</item>
         <item name="android:navigationBarColor">@color/purple_900</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">@color/purple_800</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="AppIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
