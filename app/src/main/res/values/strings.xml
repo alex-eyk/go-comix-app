@@ -8,4 +8,12 @@
     <string name="profile_image">Фото профиля</string>
     <string name="please_rate_comix">Поставьте оценку и нажмите “оценить”. Ваши оценки комиксов очень важны для нас!</string>
     <string name="rate">Оценить</string>
+    <string name="remove_favourite_comix">Удалить комикс из избранных</string>
+    <string name="add_favourite_comix">Добавить комикс в избранное</string>
+    <string name="rate_comix">Оценить комикс</string>
+    <string name="show_more_actions">Показать больше возможностей</string>
+    <string name="remove">Удалить</string>
+    <string name="info">Информация</string>
+    <string name="logout">Выйти из аккаута</string>
+    <string name="edit_profile">Редактировать данные аккаунта</string>
 </resources>

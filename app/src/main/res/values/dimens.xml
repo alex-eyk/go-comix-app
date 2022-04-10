@@ -6,6 +6,18 @@
 
     <dimen name="star_small_size">24dp</dimen>
     <dimen name="star_large_size">48dp</dimen>
+    <dimen name="image_button_size">24dp</dimen>
+    <dimen name="small_icon_size">24dp</dimen>
+
+    <dimen name="card_corner_radius">8dp</dimen>
+
+    <dimen name="profile_photo_small_size">24dp</dimen>
+    <dimen name="profile_photo_medium_size">48dp</dimen>
+    <dimen name="profile_photo_large_size">96dp</dimen>
+
+    <dimen name="top_bar_height">56dp</dimen>
+    <dimen name="small_bottom_bar_height">40dp</dimen>
+    <dimen name="small_bottom_bar_elevation">2dp</dimen>
 
     <dimen name="title_text_size">20sp</dimen>
     <dimen name="subtitle_text_size">16sp</dimen>
