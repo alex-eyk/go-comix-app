@@ -6,4 +6,6 @@
     <string name="comix_cover">Обложка комикса</string>
     <string name="open_comix_description">Открыть описание комикса</string>
     <string name="profile_image">Фото профиля</string>
+    <string name="please_rate_comix">Поставьте оценку и нажмите “оценить”. Ваши оценки комиксов очень важны для нас!</string>
+    <string name="rate">Оценить</string>
 </resources>
