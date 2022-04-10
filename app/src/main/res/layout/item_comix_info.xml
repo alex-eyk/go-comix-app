@@ -35,8 +35,8 @@
 
         <ImageView
                 android:id="@+id/comix_info_profile_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/profile_photo_medium_size"
+                android:layout_height="@dimen/profile_photo_medium_size"
                 android:background="@drawable/outline_profile_image"
                 android:contentDescription="@string/profile_image"
                 app:clipToOutline="@{true}"
