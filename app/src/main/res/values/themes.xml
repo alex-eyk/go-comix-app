@@ -16,6 +16,23 @@
         <item name="android:color">@color/purple_800</item>
     </style>
 
+    <style name="RoundRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">0.5</item>
+    </style>
+
+    <style name="RoundRatingBar.Small" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_item_small</item>
+        <item name="android:minHeight">@dimen/star_small_size</item>
+        <item name="android:minWidth">@dimen/star_small_size</item>
+    </style>
+
+    <style name="RoundRatingBar.Large" parent="RoundRatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_item_large</item>
+        <item name="android:minHeight">@dimen/star_large_size</item>
+        <item name="android:minWidth">@dimen/star_large_size</item>
+    </style>
+
     <style name="Text" parent="Widget.AppCompat.TextView">
         <item name="android:color">@color/plain_text</item>
         <item name="fontFamily">@font/montserrat_regular</item>
