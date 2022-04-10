@@ -30,9 +30,14 @@ class VectorRatingBar @JvmOverloads constructor(
 
     private var sampleTile: Bitmap? = null
 
+    companion object {
+        private const val CORNERS_SIZE = 5f
+        private const val CORNERS_NUMBER = 8
+    }
+
     private val drawableShape: Shape
         get() {
-            val roundedCorners = floatArrayOf(5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f)
+            val roundedCorners = FloatArray(CORNERS_NUMBER) { CORNERS_SIZE }
             return RoundRectShape(roundedCorners, null, null)
         }
 
@@ -43,53 +48,55 @@ class VectorRatingBar @JvmOverloads constructor(
 
     @SuppressLint("RestrictedApi")
     private fun tileify(drawable: Drawable, clip: Boolean): Drawable {
-        if (drawable is DrawableWrapper) {
-            var inner: Drawable? = drawable.wrappedDrawable
-            if (inner != null) {
-                inner = tileify(inner, clip)
-                drawable.wrappedDrawable = inner
+        return when (drawable) {
+            is DrawableWrapper -> {
+                var inner: Drawable? = drawable.wrappedDrawable
+                if (inner != null) {
+                    inner = tileify(inner, clip)
+                    drawable.wrappedDrawable = inner
+                }
+                drawable
             }
-        } else if (drawable is LayerDrawable) {
-            val numberOfLayers = drawable.numberOfLayers
-            val outDrawables = arrayOfNulls<Drawable>(numberOfLayers)
-            for (i in 0 until numberOfLayers) {
-                val id = drawable.getId(i)
-                outDrawables[i] = tileify(
-                    drawable.getDrawable(i),
-                    id == android.R.id.progress || id == android.R.id.secondaryProgress
+            is LayerDrawable -> {
+                val numberOfLayers = drawable.numberOfLayers
+                val outDrawables = arrayOfNulls<Drawable>(numberOfLayers)
+                for (i in 0 until numberOfLayers) {
+                    val id = drawable.getId(i)
+                    outDrawables[i] = tileify(
+                        drawable.getDrawable(i),
+                        id == android.R.id.progress || id == android.R.id.secondaryProgress
+                    )
+                }
+                val newBg = LayerDrawable(outDrawables)
+                for (i in 0 until numberOfLayers) {
+                    newBg.setId(i, drawable.getId(i))
+                }
+                newBg
+            }
+            is BitmapDrawable -> {
+                val tileBitmap = drawable.bitmap
+                if (sampleTile == null) {
+                    sampleTile = tileBitmap
+                }
+                val shapeDrawable = ShapeDrawable(drawableShape)
+                val bitmapShader = BitmapShader(
+                    tileBitmap,
+                    Shader.TileMode.REPEAT,
+                    Shader.TileMode.CLAMP
                 )
+                shapeDrawable.paint.shader = bitmapShader
+                shapeDrawable.paint.colorFilter = drawable.paint.colorFilter
+                if (clip)
+                    ClipDrawable(
+                        shapeDrawable,
+                        Gravity.START,
+                        ClipDrawable.HORIZONTAL
+                    )
+                else
+                    shapeDrawable
             }
-            val newBg = LayerDrawable(outDrawables)
-            for (i in 0 until numberOfLayers) {
-                newBg.setId(i, drawable.getId(i))
-            }
-            return newBg
-        } else if (drawable is BitmapDrawable) {
-            val tileBitmap = drawable.bitmap
-            if (sampleTile == null) {
-                sampleTile = tileBitmap
-            }
-            val shapeDrawable = ShapeDrawable(drawableShape)
-            val bitmapShader = BitmapShader(
-                tileBitmap,
-                Shader.TileMode.REPEAT,
-                Shader.TileMode.CLAMP
-            )
-            shapeDrawable.paint.shader = bitmapShader
-            shapeDrawable.paint.colorFilter = drawable.paint.colorFilter
-            return if (clip)
-                ClipDrawable(
-                    shapeDrawable,
-                    Gravity.START,
-                    ClipDrawable.HORIZONTAL
-                )
-            else
-                shapeDrawable
-        } else {
-            return tileify(getBitmapDrawableFromVectorDrawable(drawable), clip)
+            else -> tileify(getBitmapDrawableFromVectorDrawable(drawable), clip)
         }
-
-        return drawable
     }
 
     private fun getBitmapDrawableFromVectorDrawable(drawable: Drawable): BitmapDrawable {
