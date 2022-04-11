@@ -16,4 +16,15 @@
     <string name="info">Информация</string>
     <string name="logout">Выйти из аккаута</string>
     <string name="edit_profile">Редактировать данные аккаунта</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="cancel_changes">Отменить изменения</string>
+    <string name="edit_profile_image">Изменить изображение профиля</string>
+    <string name="nickname">Никнейм</string>
+    <string name="email">Адрес эл. почты</string>
+    <string name="about_me">О себе</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="password_again">Пароль повторно</string>
 </resources>
