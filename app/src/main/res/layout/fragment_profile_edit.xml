@@ -38,10 +38,10 @@
                 android:layout_height="@dimen/image_button_small_size"
                 android:src="@drawable/ic_close"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cancel_changes"
                 app:layout_constraintEnd_toStartOf="@+id/end_guideline"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="@+id/profile_edit_top_bar"
-                android:contentDescription="@string/cancel_changes" />
+                app:layout_constraintBottom_toBottomOf="@+id/profile_edit_top_bar" />
 
         <ImageButton
                 android:id="@+id/profile_edit_save_button"
@@ -72,6 +72,7 @@
                 android:layout_width="@dimen/profile_photo_large_size"
                 android:layout_height="@dimen/profile_photo_large_size"
                 android:src="@color/fogging"
+                app:clipToOutline="@{true}"
                 app:layout_constraintStart_toStartOf="@+id/profile_edit_image"
                 app:layout_constraintTop_toTopOf="@+id/profile_edit_image"
                 tools:src="@drawable/placeholder_profile_photo_fogging"
@@ -81,14 +82,14 @@
                 android:id="@+id/profile_edit_button"
                 android:layout_width="@dimen/image_button_large_size"
                 android:layout_height="@dimen/image_button_large_size"
+                android:contentDescription="@string/edit_profile_image"
                 android:src="@drawable/ic_edit"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 app:tint="?attr/colorOnPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/profile_edit_image"
                 app:layout_constraintStart_toStartOf="@+id/profile_edit_image"
                 app:layout_constraintTop_toTopOf="@+id/profile_edit_image"
-                app:layout_constraintBottom_toBottomOf="@+id/profile_edit_image"
-                android:contentDescription="@string/edit_profile_image" />
+                app:layout_constraintBottom_toBottomOf="@+id/profile_edit_image" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/profile_edit_nickname_input_layout"
@@ -126,6 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:maxLines="1"
+                    android:inputType="textEmailAddress"
                     tools:text="example@google.com" />
 
         </com.google.android.material.textfield.TextInputLayout>

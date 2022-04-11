@@ -42,7 +42,7 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_app_icon"
-                app:tint="?attr/colorPrimary"
+                app:tint="?attr/colorPrimaryVariant"
                 tools:ignore="ContentDescription" />
 
     </androidx.cardview.widget.CardView>

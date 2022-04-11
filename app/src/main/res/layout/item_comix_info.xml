@@ -42,7 +42,8 @@
                 app:clipToOutline="@{true}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintTop_toTopOf="@id/top_guideline"
-                app:layout_constraintBottom_toBottomOf="@id/comix_info_subscribers_text" />
+                app:layout_constraintBottom_toBottomOf="@id/comix_info_subscribers_text"
+                tools:src="@drawable/placeholder_profile_photo" />
 
         <TextView
                 android:id="@+id/comix_info_author_text"
