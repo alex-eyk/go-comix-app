@@ -27,8 +27,8 @@
 
         <ImageButton
                 android:id="@+id/comix_page_remove_favourite_button"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
+                android:layout_width="@dimen/image_button_small_size"
+                android:layout_height="@dimen/image_button_small_size"
                 android:src="@drawable/ic_bookmark_remove"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/remove_favourite_comix"
@@ -38,8 +38,8 @@
 
         <ImageButton
                 android:id="@+id/comix_page_add_favourite_button"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
+                android:layout_width="@dimen/image_button_small_size"
+                android:layout_height="@dimen/image_button_small_size"
                 android:layout_marginEnd="@dimen/components_medium_margin"
                 android:src="@drawable/ic_bookmark_add"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -50,8 +50,8 @@
 
         <ImageButton
                 android:id="@+id/comix_page_rate_button"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
+                android:layout_width="@dimen/image_button_small_size"
+                android:layout_height="@dimen/image_button_small_size"
                 android:layout_marginEnd="@dimen/components_medium_margin"
                 android:src="@drawable/ic_star"
                 android:background="?attr/selectableItemBackgroundBorderless"

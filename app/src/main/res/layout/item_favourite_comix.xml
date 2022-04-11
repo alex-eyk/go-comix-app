@@ -72,8 +72,8 @@
 
             <ImageButton
                     android:id="@+id/fav_comix_more_button"
-                    android:layout_width="@dimen/image_button_size"
-                    android:layout_height="@dimen/image_button_size"
+                    android:layout_width="@dimen/image_button_small_size"
+                    android:layout_height="@dimen/image_button_small_size"
                     android:elevation="@dimen/small_bottom_bar_elevation"
                     android:src="@drawable/ic_more"
                     android:background="?attr/selectableItemBackgroundBorderless"

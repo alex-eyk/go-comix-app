@@ -37,8 +37,8 @@
 
         <ImageButton
                 android:id="@+id/profile_logout_button"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
+                android:layout_width="@dimen/image_button_small_size"
+                android:layout_height="@dimen/image_button_small_size"
                 android:src="@drawable/ic_logout"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/logout"
@@ -48,8 +48,8 @@
 
         <ImageButton
                 android:id="@+id/profile_edit_button"
-                android:layout_width="@dimen/image_button_size"
-                android:layout_height="@dimen/image_button_size"
+                android:layout_width="@dimen/image_button_small_size"
+                android:layout_height="@dimen/image_button_small_size"
                 android:layout_marginEnd="@dimen/components_medium_margin"
                 android:src="@drawable/ic_edit"
                 android:background="?attr/selectableItemBackgroundBorderless"
