@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="edge_margin">16dp</dimen>
+    <dimen name="components_small_margin">8dp</dimen>
+    <dimen name="components_medium_margin">16dp</dimen>
+    <dimen name="large_button_margin">56dp</dimen>
+    <dimen name="large_app_icon_margin">56dp</dimen>
+
+    <dimen name="star_small_size">24dp</dimen>
+    <dimen name="star_large_size">48dp</dimen>
+    <dimen name="image_button_small_size">24dp</dimen>
+    <dimen name="image_button_large_size">48dp</dimen>
+    <dimen name="small_icon_size">24dp</dimen>
+
+    <dimen name="card_corner_small_radius">8dp</dimen>
+    <dimen name="card_corner_large_radius">16dp</dimen>
+
+    <dimen name="profile_photo_small_size">24dp</dimen>
+    <dimen name="profile_photo_medium_size">48dp</dimen>
+    <dimen name="profile_photo_large_size">96dp</dimen>
+
+    <dimen name="large_icon_card_size">80dp</dimen>
+
+    <dimen name="top_bar_height">56dp</dimen>
+    <dimen name="small_bottom_bar_height">40dp</dimen>
+    <dimen name="small_bottom_bar_elevation">2dp</dimen>
+
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="subtitle_text_size">16sp</dimen>
+    <dimen name="content_text_size">14sp</dimen>
+
+    <dimen name="title_letter_spacing">0.02</dimen>
+    <dimen name="title_shadow_d">3</dimen>
+    <dimen name="title_shadow_radius">10</dimen>
+    <dimen name="icon_size">48dp</dimen>
+</resources>
