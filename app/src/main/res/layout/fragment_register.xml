@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="@+id/start_guideline"
             app:layout_constraintEnd_toStartOf="@+id/end_guideline"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/register_register_button">
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister">
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/register_username_input_layout"
@@ -103,7 +103,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/register_register_button"
+            android:id="@+id/btnRegister"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
