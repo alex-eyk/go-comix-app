@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/components_medium_margin"
-                android:hint="@string/username">
+                android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_email_edit_text"
