@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="edge_margin">16dp</dimen>
+    <dimen name="input_margin_tablets_begin">0.2</dimen>
+    <dimen name="input_margin_tablets_end">0.8</dimen>
+    <dimen name="button_margin_tablets_begin">0.35</dimen>
+    <dimen name="button_margin_tablets_end">0.65</dimen>
+
     <dimen name="components_small_margin">8dp</dimen>
     <dimen name="components_medium_margin">16dp</dimen>
     <dimen name="large_button_margin">56dp</dimen>
     <dimen name="large_app_icon_margin">56dp</dimen>
 
     <dimen name="star_small_size">24dp</dimen>
+    <dimen name="star_small_size_tablets">36dp</dimen>
     <dimen name="star_large_size">48dp</dimen>
+    <dimen name="star_large_size_tablets">64dp</dimen>
     <dimen name="image_button_small_size">24dp</dimen>
+    <dimen name="image_button_small_size_tablets">36dp</dimen>
     <dimen name="image_button_large_size">48dp</dimen>
+    <dimen name="image_button_large_size_tablets">64dp</dimen>
     <dimen name="small_icon_size">24dp</dimen>
     <dimen name="small_icon_size_tablets">36p</dimen>
 
@@ -19,6 +28,9 @@
     <dimen name="profile_photo_small_size">24dp</dimen>
     <dimen name="profile_photo_medium_size">48dp</dimen>
     <dimen name="profile_photo_large_size">96dp</dimen>
+    <dimen name="profile_photo_small_size_tablets">36dp</dimen>
+    <dimen name="profile_photo_medium_size_tablets">64dp</dimen>
+    <dimen name="profile_photo_large_size_tablets">144dp</dimen>
 
     <dimen name="large_icon_card_size">80dp</dimen>
     <dimen name="large_icon_card_size_tablets">120dp</dimen>

@@ -3,19 +3,17 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:screenOrientation="landscape"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/start_guideline"
+            android:id="@+id/input_start_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="@dimen/input_margin_tablets_begin" />
 
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/end_guideline"
+            android:id="@+id/input_end_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -51,7 +49,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/login_data_layout">
+            app:layout_constraintBottom_toTopOf="@+id/register_data_layout">
 
         <ImageView
                 android:id="@+id/login_app_icon"
@@ -65,44 +63,56 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-            android:id="@+id/login_data_layout"
+            android:id="@+id/register_data_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/login_login_button"
+            app:layout_constraintStart_toStartOf="@+id/input_start_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/input_end_guideline"
             app:layout_constraintTop_toBottomOf="@+id/login_app_icon_card"
-            app:layout_constraintStart_toStartOf="@+id/start_guideline"
-            app:layout_constraintEnd_toStartOf="@+id/end_guideline">
+            app:layout_constraintBottom_toTopOf="@+id/register_register_button">
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_username_input_layout"
+                android:id="@+id/register_username_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username"
-                app:layout_constraintTop_toBottomOf="@+id/login_app_icon_card"
-                app:layout_constraintStart_toStartOf="@+id/start_guideline"
-                app:layout_constraintEnd_toStartOf="@+id/end_guideline"
-                app:layout_constraintBottom_toTopOf="@+id/login_login_button">
+                android:hint="@string/username">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_username_edit_text"
+                    android:id="@+id/register_username_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="login"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    tools:text="login" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_password_input_layout"
+                android:id="@+id/register_email_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                app:passwordToggleEnabled="true"
-                android:layout_marginTop="@dimen/components_medium_margin">
+                android:layout_marginTop="@dimen/components_medium_margin"
+                android:hint="@string/username">
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_password_edit_text"
+                    android:id="@+id/register_email_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLines="1"
+                    tools:text="example@google.com" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_password_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/components_medium_margin"
+                android:hint="@string/password"
+                app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_password_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
@@ -110,27 +120,32 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_password_again_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/components_medium_margin"
+                android:hint="@string/password_again"
+                app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_password_again_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    tools:text="password" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_login_button"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/components_small_margin"
-            android:text="@string/login"
-            app:layout_constraintBottom_toTopOf="@+id/login_register_button"
-            app:layout_constraintStart_toStartOf="@+id/button_start_guideline"
-            app:layout_constraintEnd_toStartOf="@+id/button_end_guideline"/>
-
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_register_button"
+            android:id="@+id/register_register_button"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/register"
             app:layout_constraintStart_toStartOf="@+id/button_start_guideline"
             app:layout_constraintEnd_toStartOf="@+id/button_end_guideline"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline" />
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
