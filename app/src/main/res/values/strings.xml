@@ -1,30 +1,3 @@
 <resources>
     <string name="app_name">GoComix</string>
-    <string name="menu_home">Главная</string>
-    <string name="menu_favourite">Избранное</string>
-    <string name="menu_profile">Профиль</string>
-    <string name="comix_cover">Обложка комикса</string>
-    <string name="open_comix_description">Открыть описание комикса</string>
-    <string name="profile_image">Фото профиля</string>
-    <string name="please_rate_comix">Поставьте оценку и нажмите “оценить”. Ваши оценки комиксов очень важны для нас!</string>
-    <string name="rate">Оценить</string>
-    <string name="remove_favourite_comix">Удалить комикс из избранных</string>
-    <string name="add_favourite_comix">Добавить комикс в избранное</string>
-    <string name="rate_comix">Оценить комикс</string>
-    <string name="show_more_actions">Показать больше возможностей</string>
-    <string name="remove">Удалить</string>
-    <string name="info">Информация</string>
-    <string name="logout">Выйти из аккаута</string>
-    <string name="edit_profile">Редактировать данные аккаунта</string>
-    <string name="save_changes">Сохранить изменения</string>
-    <string name="cancel_changes">Отменить изменения</string>
-    <string name="edit_profile_image">Изменить изображение профиля</string>
-    <string name="nickname">Никнейм</string>
-    <string name="email">Адрес эл. почты</string>
-    <string name="about_me">О себе</string>
-    <string name="register">Зарегистрироваться</string>
-    <string name="login">Войти</string>
-    <string name="username">Логин</string>
-    <string name="password">Пароль</string>
-    <string name="password_again">Пароль повторно</string>
 </resources>
