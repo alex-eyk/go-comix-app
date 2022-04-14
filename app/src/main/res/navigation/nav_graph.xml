@@ -19,5 +19,18 @@
     <fragment
             android:id="@+id/navigation_profile"
             android:name="com.team.seven.gocomix.ui.profile.ProfileFragment"
-            android:label="Profile" />
+            android:label="Profile" >
+        <action
+                android:id="@+id/action_navigation_profile_to_profileEditFragment"
+                app:destination="@id/profileEditFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/profileEditFragment"
+            android:name="com.team.seven.gocomix.ui.profile_edit.ProfileEditFragment"
+            android:label="profile_edit_fragment"
+            tools:layout="@layout/profile_edit_fragment" >
+        <action
+                android:id="@+id/action_profileEditFragment_to_navigation_profile"
+                app:destination="@id/navigation_profile" />
+    </fragment>
 </navigation>
