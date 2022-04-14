@@ -5,6 +5,19 @@
 
     <data>
 
+        <import type="com.team.seven.gocomix.model.Comix" />
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
+        <variable
+                name="comix"
+                type="Comix" />
+
+        <variable
+                name="infoClickListener"
+                type="Function1&lt;Comix, Unit>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/components_small_margin"
                 android:paddingTop="@dimen/edge_margin"
+                android:text="@{comix.title}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintBottom_toTopOf="@id/description_text"
                 app:layout_constraintEnd_toEndOf="@id/end_guideline"
@@ -63,6 +77,7 @@
                 style="@style/ThemeOverlay.Material3.FloatingActionButton.Primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> infoClickListener.invoke(comix)}"
                 app:srcCompat="@drawable/ic_menu"
                 app:layout_constraintEnd_toStartOf="@id/end_guideline"
                 app:layout_constraintBottom_toTopOf="@id/top_guideline"
@@ -74,6 +89,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/edge_margin"
+                android:text="@{comix.description}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintBottom_toTopOf="@id/top_guideline"
                 app:layout_constraintEnd_toStartOf="@id/comix_preview_floating_action_button"
