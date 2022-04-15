@@ -1,26 +1,31 @@
 package com.team.seven.gocomix.ui.home
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.team.seven.gocomix.model.Comix
 import com.team.seven.gocomix.repo.ComixRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-        private val comixRepository: ComixRepository
+    private val comixRepository: ComixRepository
 ) : ViewModel() {
 
     private val _comicsState: MutableStateFlow<ComicsUiState> =
-            MutableStateFlow(ComicsUiState.Loading)
+        MutableStateFlow(ComicsUiState.Loading)
 
     val comicsState: StateFlow<ComicsUiState> = _comicsState
 
-    init {
-        comixRepository.getComics().let {
-            _comicsState.value = ComicsUiState.Success(it)
+    fun updateComics() {
+        viewModelScope.launch(Dispatchers.IO) {
+            comixRepository.getComics().let {
+                _comicsState.value = ComicsUiState.Success(it)
+            }
         }
     }
 }
