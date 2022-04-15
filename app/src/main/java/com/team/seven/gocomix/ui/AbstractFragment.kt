@@ -11,7 +11,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.team.seven.gocomix.ui.home.ComicsUiState
 import kotlinx.coroutines.launch
 
 abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
@@ -47,6 +46,6 @@ abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
     open fun onBindingCreated() {
     }
 
-    open fun onCollectStates() {
+    open suspend fun onCollectStates() {
     }
 }
