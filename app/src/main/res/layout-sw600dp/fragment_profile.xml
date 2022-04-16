@@ -78,6 +78,7 @@
                 android:layout_height="@dimen/profile_photo_large_size_tablets"
                 android:layout_marginTop="@dimen/components_medium_margin"
                 android:contentDescription="@string/profile_image"
+                android:background="@drawable/outline_profile_image_large"
                 app:clipToOutline="@{true}"
                 app:layout_constraintTop_toBottomOf="@+id/profile_top_bar"
                 app:layout_constraintStart_toStartOf="parent"
