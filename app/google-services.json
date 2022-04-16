@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "508757937169",
+    "project_id": "gocomix-5704b",
+    "storage_bucket": "gocomix-5704b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508757937169:android:c220b8337c48af9db1b5b0",
+        "android_client_info": {
+          "package_name": "com.team.seven.gocomix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508757937169-pdn00bmlb4t9vullt09ai2a4518e04gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team.seven.gocomix",
+            "certificate_hash": "af5cdb0066834fc0fd6ec04bfa480f30350ced35"
+          }
+        },
+        {
+          "client_id": "508757937169-ttsnnrbpk2qej84kbmhoigfcl1j81hnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzXuVP4HdBuFsuHKofEWSjC46r6xNBNvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508757937169-ttsnnrbpk2qej84kbmhoigfcl1j81hnv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
