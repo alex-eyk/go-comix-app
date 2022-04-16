@@ -27,4 +27,12 @@
     <string name="username">Логин</string>
     <string name="password">Пароль</string>
     <string name="password_again">Пароль повторно</string>
+    <string name="personal_account_text">Личный кабинет</string>
+    <string name="login_button_text">Вход</string>
+    <string name="logout_button_text">Выход</string>
+    <string name="login_prompt">Выполните вход</string>
+    <string name="welcome_message">Привет, %1$s!</string>
+    <string name="login_unsuccessful_msg">Вход не выполнен</string>
+    <string name="login_successful_msg">Вход успешно выполнен</string>
+
 </resources>
