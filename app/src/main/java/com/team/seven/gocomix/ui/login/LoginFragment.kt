@@ -7,20 +7,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import com.team.seven.gocomix.R
-import com.team.seven.gocomix.databinding.FragmentLoginBinding
+import androidx.navigation.fragment.findNavController
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.team.seven.gocomix.R
+import com.team.seven.gocomix.databinding.FragmentSignInBinding
 
-class LoginFragment:Fragment() {
+class LoginFragment : Fragment() {
 
     companion object {
         const val TAG = "LoginFragment"
@@ -35,11 +35,11 @@ class LoginFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(
-            inflater, R.layout.fragment_login, container, false
+        val binding = DataBindingUtil.inflate<FragmentSignInBinding>(
+            inflater, R.layout.fragment_sign_in, container, false
         )
 
-        binding.loginLoginButton.setOnClickListener {launchSignInFlow()}
+        binding.loginLoginButton.setOnClickListener { launchSignInFlow() }
 
         return binding.root
     }
