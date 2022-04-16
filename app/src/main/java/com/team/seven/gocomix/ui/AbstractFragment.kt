@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 
 abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
     private val layoutRes: Int
@@ -25,9 +29,23 @@ abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
         this.binding = DataBindingUtil
             .inflate(inflater, layoutRes, container, false)
         onBindingCreated()
+        collectStates()
         return binding.root
     }
 
+    private fun collectStates() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(
+                Lifecycle.State.STARTED
+            ) {
+                onCollectStates()
+            }
+        }
+    }
+
     open fun onBindingCreated() {
+    }
+
+    open suspend fun onCollectStates() {
     }
 }
