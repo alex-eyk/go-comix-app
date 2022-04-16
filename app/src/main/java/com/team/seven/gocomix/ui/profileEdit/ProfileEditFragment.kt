@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.ui.profile_edit
+package com.team.seven.gocomix.ui.profileEdit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentProfileEditBinding
+import com.team.seven.gocomix.databinding.ProfileEditFragmentBinding
 import com.team.seven.gocomix.ui.AbstractFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileEditFragment : AbstractFragment<FragmentProfileEditBinding, ProfileEditViewModel>(
+class ProfileEditFragment : AbstractFragment<ProfileEditFragmentBinding, ProfileEditViewModel>(
     R.layout.profile_edit_fragment
 ) {
 

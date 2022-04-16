@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.ui.profile_edit
+package com.team.seven.gocomix.ui.profileEdit
 
 import android.content.ContentValues.TAG
 import android.util.Log

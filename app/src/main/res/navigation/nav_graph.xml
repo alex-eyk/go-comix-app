@@ -26,7 +26,7 @@
     </fragment>
     <fragment
             android:id="@+id/profileEditFragment"
-            android:name="com.team.seven.gocomix.ui.profile_edit.ProfileEditFragment"
+            android:name="com.team.seven.gocomix.ui.profileEdit.ProfileEditFragment"
             android:label="profile_edit_fragment"
             tools:layout="@layout/profile_edit_fragment" >
         <action
