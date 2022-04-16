@@ -37,5 +37,4 @@ class ProfileFragment : AbstractFragment<FragmentProfileBinding, ProfileViewMode
             view.findNavController().navigate(R.id.action_navigation_profile_to_profileEditFragment)
         }
     }
-
 }

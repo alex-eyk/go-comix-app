@@ -11,8 +11,6 @@ import com.team.seven.gocomix.databinding.FragmentProfileEditBinding
 import com.team.seven.gocomix.ui.AbstractFragment
 import dagger.hilt.android.AndroidEntryPoint
 
-
-
 @AndroidEntryPoint
 class ProfileEditFragment : AbstractFragment<FragmentProfileEditBinding, ProfileEditViewModel>(
     R.layout.profile_edit_fragment
@@ -38,8 +36,9 @@ class ProfileEditFragment : AbstractFragment<FragmentProfileEditBinding, Profile
         profileEditBinding.profileEditCloseButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_profileEditFragment_to_navigation_profile)
         }
+        profileEditBinding.profileEditSaveButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_profileEditFragment_to_navigation_profile)
+            viewModel.edit()
+        }
     }
-
 }
-
-
