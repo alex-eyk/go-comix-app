@@ -1,11 +1,7 @@
 package com.team.seven.gocomix.ui.profile
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentProfileBinding
 import com.team.seven.gocomix.ui.AbstractFragment
@@ -17,24 +13,11 @@ class ProfileFragment : AbstractFragment<FragmentProfileBinding, ProfileViewMode
 ) {
 
     override val viewModel: ProfileViewModel by viewModels()
-    private var _profileBinding: FragmentProfileBinding? = null
 
-    private val profileBinding get() = _profileBinding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _profileBinding = FragmentProfileBinding.inflate(inflater, container, false)
-        val view = profileBinding.root
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        profileBinding.profileEditButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_navigation_profile_to_profileEditFragment)
+    override fun onBindingCreated() {
+        super.onBindingCreated()
+        binding.profileEditButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_profile_to_profileEditFragment)
         }
     }
 }

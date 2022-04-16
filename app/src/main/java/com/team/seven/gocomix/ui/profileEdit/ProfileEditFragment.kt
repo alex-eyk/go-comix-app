@@ -1,13 +1,8 @@
 package com.team.seven.gocomix.ui.profileEdit
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.team.seven.gocomix.R
-import com.team.seven.gocomix.databinding.FragmentProfileEditBinding
 import com.team.seven.gocomix.databinding.ProfileEditFragmentBinding
 import com.team.seven.gocomix.ui.AbstractFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,27 +13,14 @@ class ProfileEditFragment : AbstractFragment<ProfileEditFragmentBinding, Profile
 ) {
 
     override val viewModel: ProfileEditViewModel by viewModels()
-    private var _profileEditBinding: FragmentProfileEditBinding? = null
 
-    private val profileEditBinding get() = _profileEditBinding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _profileEditBinding = FragmentProfileEditBinding.inflate(inflater, container, false)
-        val view = profileEditBinding.root
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        profileEditBinding.profileEditCloseButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_profileEditFragment_to_navigation_profile)
+    override fun onBindingCreated() {
+        super.onBindingCreated()
+        binding.profileEditCloseButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileEditFragment_to_navigation_profile)
         }
-        profileEditBinding.profileEditSaveButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_profileEditFragment_to_navigation_profile)
+        binding.profileEditSaveButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileEditFragment_to_navigation_profile)
             viewModel.edit()
         }
     }
