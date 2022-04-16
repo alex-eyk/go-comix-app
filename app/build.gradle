@@ -20,52 +20,53 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "Boolean", "DEBUG_MODE", "true"
+        }
         release {
+            buildConfigField "Boolean", "DEBUG_MODE", "false"
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     buildFeatures {
         dataBinding true
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
 }
 
-apply plugin: 'com.android.application'
-
-apply plugin: 'com.google.gms.google-services'
-
 dependencies {
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
-    def nav_version = "2.4.1"
+    def nav_version = "2.4.2"
     def hilt_version = "2.40.4"
 
-
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
 
-    implementation platform('com.google.firebase:firebase-bom:26.3.0')
-
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
-
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-alpha06'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
