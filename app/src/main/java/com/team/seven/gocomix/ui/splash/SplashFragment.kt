@@ -17,12 +17,6 @@ class SplashFragment : AbstractFragment<FragmentSplashBinding, SplashViewModel>(
 
     override val viewModel: SplashViewModel by viewModels()
 
-    private lateinit var navController: NavController
-
-    override fun onBindingCreated() {
-        this.navController = findNavController()
-    }
-
     override suspend fun onCollectStates() {
         viewModel.userState.collect { state ->
             when (state) {

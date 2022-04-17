@@ -19,10 +19,7 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
 
     override val viewModel: SignInViewModel by viewModels()
 
-    private lateinit var navController: NavController
-
     override fun onBindingCreated() {
-        this.navController = findNavController()
         super.binding.loginLoginButton.setOnClickListener {
         }
     }

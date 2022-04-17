@@ -11,6 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 
 abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
@@ -20,6 +22,7 @@ abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
     protected abstract val viewModel: VM
 
     protected lateinit var binding: B
+    protected lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +31,7 @@ abstract class AbstractFragment<B : ViewDataBinding, VM : ViewModel>(
     ): View {
         this.binding = DataBindingUtil
             .inflate(inflater, layoutRes, container, false)
+        this.navController = findNavController()
         onBindingCreated()
         collectStates()
         return binding.root
