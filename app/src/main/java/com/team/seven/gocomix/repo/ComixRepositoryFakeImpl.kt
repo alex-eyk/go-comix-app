@@ -30,6 +30,26 @@ class ComixRepositoryFakeImpl : ComixRepository {
                     login = "Some Author",
                     email = "example@google.com"
                 )
+            ),
+            Comix(
+                id = 2,
+                title = "Звездные войны: часть 8",
+                description = "Погрузитесь в мир звездных войн после переломного момента " +
+                        "гражданской войны: уничтожения величайшего оружия галактической империи",
+                cover = Image(
+                    origin = "https://drive.google.com/uc?export=view&id=" +
+                        "1WIefgzJ49keMfvjutH3rtjlIYmxOEnyM",
+                    small = "https://drive.google.com/uc?export=view&id=" +
+                        "1WpEviCVSlo7F-mrJGt7VLnJMCRyH0-5S",
+                    loading = "https://drive.google.com/uc?export=view&id=" +
+                        "1Z-FAnX4o3bz2Dn5YZQv5B-GZ3ESKIiXu"
+                ),
+                rating = 4.5,
+                author = Author(
+                    id = 1,
+                    login = "Some Author",
+                    email = "example@google.com"
+                )
             )
         ))
     }
