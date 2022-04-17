@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavouriteFragment : AbstractFragment<FragmentFavouriteBinding, FavouriteViewModel>(
-    R.layout.fragment_favourite
+    layoutRes = R.layout.fragment_favourite
 ) {
 
     override val viewModel: FavouriteViewModel by viewModels()

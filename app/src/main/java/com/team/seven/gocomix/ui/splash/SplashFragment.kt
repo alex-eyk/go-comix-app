@@ -3,8 +3,6 @@ package com.team.seven.gocomix.ui.splash
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSplashBinding
 import com.team.seven.gocomix.ui.AbstractFragment
@@ -16,12 +14,6 @@ class SplashFragment : AbstractFragment<FragmentSplashBinding, SplashViewModel>(
 ) {
 
     override val viewModel: SplashViewModel by viewModels()
-
-    private lateinit var navController: NavController
-
-    override fun onBindingCreated() {
-        this.navController = findNavController()
-    }
 
     override suspend fun onCollectStates() {
         viewModel.userState.collect { state ->
