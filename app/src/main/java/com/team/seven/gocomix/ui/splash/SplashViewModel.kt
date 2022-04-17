@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
