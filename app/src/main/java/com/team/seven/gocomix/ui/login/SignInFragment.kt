@@ -1,8 +1,6 @@
 package com.team.seven.gocomix.ui.login
 
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignInBinding
 import com.team.seven.gocomix.ui.AbstractFragment

@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileEditFragment : AbstractFragment<ProfileEditFragmentBinding, ProfileEditViewModel>(
-    R.layout.profile_edit_fragment
+    layoutRes = R.layout.profile_edit_fragment
 ) {
 
     override val viewModel: ProfileEditViewModel by viewModels()
