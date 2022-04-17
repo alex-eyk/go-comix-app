@@ -1,53 +1,45 @@
 package com.team.seven.gocomix.ui.splash
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSplashBinding
-import com.team.seven.gocomix.ui.login.LoginViewModel
+import com.team.seven.gocomix.ui.AbstractFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class SplashFragment : Fragment() {
+@AndroidEntryPoint
+class SplashFragment : AbstractFragment<FragmentSplashBinding, SplashViewModel>(
+    layoutRes = R.layout.fragment_splash
+) {
 
-    private val viewModel by viewModels<LoginViewModel>()
-    private lateinit var binding: FragmentSplashBinding
+    override val viewModel: SplashViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    private lateinit var navController: NavController
 
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
+    override fun onBindingCreated() {
+        this.navController = findNavController()
+    }
 
-        return binding.root
+    override suspend fun onCollectStates() {
+        viewModel.userState.collect { state ->
+            when (state) {
+                is AuthState.Loading -> {
+                }
+                is AuthState.Logged -> {
+                    navController.navigate(R.id.navigation_home)
+                }
+                is AuthState.NotLogged -> {
+                    navController.navigate(R.id.navigation_login)
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeAuthenticationState()
+        viewModel.updateAuthState()
     }
-
-    private fun observeAuthenticationState() {
-        viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
-            when (authenticationState) {
-                LoginViewModel.AuthenticationState.AUTHENTICATED -> {
-
-
-                    findNavController().navigate(R.id.navigation_profile)
-
-                } else -> {
-
-                    findNavController().navigate(R.id.navigation_login)
-
-            }
-            }
-        })
-    }
-
 }
