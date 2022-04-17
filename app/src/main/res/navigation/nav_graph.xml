@@ -22,7 +22,6 @@
             android:name="com.team.seven.gocomix.ui.favourite.FavouriteFragment"
             android:label="Favourite" />
 
-
     <fragment
             android:id="@+id/navigation_profile"
             android:name="com.team.seven.gocomix.ui.profile.ProfileFragment"
@@ -50,5 +49,11 @@
             android:name="com.team.seven.gocomix.ui.signin.SignInFragment"
             android:label="Login"
             tools:layout="@layout/fragment_sign_in" />
+
+    <fragment
+            android:id="@+id/navigation_sign_up"
+            android:name="com.team.seven.gocomix.ui.signup.SignUpFragment"
+            android:label="Signup"
+            tools:layout="@layout/fragment_sign_up" />
 
 </navigation>

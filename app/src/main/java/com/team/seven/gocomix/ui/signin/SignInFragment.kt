@@ -20,5 +20,8 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
     override fun onBindingCreated() {
         super.binding.loginLoginButton.setOnClickListener {
         }
+        super.binding.loginRegisterButton.setOnClickListener {
+            navController.navigate(R.id.navigation_sign_up)
+        }
     }
 }
