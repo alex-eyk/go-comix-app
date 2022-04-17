@@ -8,6 +8,9 @@
     <dimen name="button_margin_tablets_begin">0.35</dimen>
     <dimen name="button_margin_tablets_end">0.65</dimen>
 
+    <dimen name="circle_progress_width">8dp</dimen>
+    <dimen name="circle_progress_radius">40dp</dimen>
+
     <dimen name="components_small_margin">8dp</dimen>
     <dimen name="components_medium_margin">16dp</dimen>
     <dimen name="large_button_margin">56dp</dimen>

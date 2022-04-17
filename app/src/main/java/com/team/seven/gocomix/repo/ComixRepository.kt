@@ -5,7 +5,7 @@ import com.team.seven.gocomix.model.Page
 
 interface ComixRepository {
 
-    fun getComics(): List<Comix>
+    suspend fun getComics(): Result<List<Comix>>
 
-    fun getPages(comixId: Int): List<Page>
+    suspend fun getPages(comixId: Int): Result<List<Page>>
 }
