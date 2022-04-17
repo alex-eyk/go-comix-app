@@ -1,20 +1,29 @@
+@file:Suppress("SpellCheckingInspection")
+
 package com.team.seven.gocomix.repo
 
 import com.team.seven.gocomix.model.Author
 import com.team.seven.gocomix.model.Comix
+import com.team.seven.gocomix.model.Image
 import com.team.seven.gocomix.model.Page
 
 class ComixRepositoryFakeImpl : ComixRepository {
 
-    override fun getComics(): List<Comix> {
-        return listOf(
+    override suspend fun getComics(): Result<List<Comix>> {
+        return Result.success(listOf(
             Comix(
                 id = 1,
                 title = "Звездные войны: часть 4",
                 description = "Погрузитесь в мир звездных войн после переломного момента " +
                     "гражданской войны: уничтожения величайшего оружия галактической империи",
-                cover = "https://drive.google.com/uc?export=view" +
-                    "&id=1bdWCGz5enXt11ECg0sKeDZJPn84Z8lxW",
+                cover = Image(
+                    origin = "https://drive.google.com/uc?export=view" +
+                        "&id=1bdWCGz5enXt11ECg0sKeDZJPn84Z8lxW",
+                    small = "https://drive.google.com/uc?export=view" +
+                        "&id=1joUPpAUZ4z-1MyqUJDD_Kp9sauJKPLHt",
+                    loading = "https://drive.google.com/uc?export=view" +
+                        "&id=1a2EcpaofMpDLu2POzW22J-4w9qjDxgxz"
+                ),
                 rating = 5.0,
                 author = Author(
                     id = 1,
@@ -22,11 +31,11 @@ class ComixRepositoryFakeImpl : ComixRepository {
                     email = "example@google.com"
                 )
             )
-        )
+        ))
     }
 
-    override fun getPages(comixId: Int): List<Page> {
-        return listOf(
+    override suspend fun getPages(comixId: Int): Result<List<Page>> {
+        return Result.success(listOf(
             Page(
                 id = 1,
                 comixId = 1,
@@ -48,6 +57,6 @@ class ComixRepositoryFakeImpl : ComixRepository {
                 image = "https://drive.google.com/uc?export=view" +
                     "&id=1MVqRsG66jIEgVhbpASsDu6xhto7TE9tU"
             )
-        )
+        ))
     }
 }
