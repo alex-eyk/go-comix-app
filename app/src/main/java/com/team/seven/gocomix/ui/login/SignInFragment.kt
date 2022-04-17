@@ -24,7 +24,4 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
         super.binding.loginLoginButton.setOnClickListener {
         }
     }
-
-    override suspend fun onCollectStates() {
-    }
 }
