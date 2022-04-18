@@ -46,10 +46,18 @@
                 app:layout_constraintGuide_end="@dimen/edge_margin" />
 
         <ImageView
+                android:id="@+id/comix_preview_cover_bg_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:blurImage="@{comix.cover.loading}"
+                tools:ignore="ContentDescription" />
+
+        <ImageView
                 android:id="@+id/comix_preview_cover_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/comix_cover" />
+                android:contentDescription="@string/comix_cover"
+                app:image="@{comix.cover.origin}" />
 
         <View
                 android:id="@+id/comix_preview_info_background"

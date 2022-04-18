@@ -7,7 +7,10 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("clipToOutline")
-    fun setClipToOutline(imageView: ImageView, clip: Boolean) {
+    fun setClipToOutline(
+        imageView: ImageView,
+        clip: Boolean
+    ) {
         imageView.clipToOutline = clip
     }
 }
