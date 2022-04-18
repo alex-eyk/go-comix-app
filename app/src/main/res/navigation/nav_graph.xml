@@ -32,6 +32,9 @@
         <action
                 android:id="@+id/action_navigation_profile_to_profileEditFragment"
                 app:destination="@id/profileEditFragment" />
+        <action
+                android:id="@+id/action_navigation_profile_to_navigation_sign_in"
+                app:destination="@id/navigation_sign_in" />
     </fragment>
 
     <fragment
@@ -49,6 +52,10 @@
             android:id="@+id/navigation_sign_in"
             android:name="com.team.seven.gocomix.ui.login.SignInFragment"
             android:label="Login"
-            tools:layout="@layout/fragment_sign_in" />
+            tools:layout="@layout/fragment_sign_in" >
+        <action
+                android:id="@+id/action_navigation_sign_in_to_navigation_home"
+                app:destination="@id/navigation_home" />
+    </fragment>
 
 </navigation>
