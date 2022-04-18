@@ -41,9 +41,7 @@ class SignUpFragment : AbstractFragment<FragmentSignUpBinding, SignUpViewModel>(
 
 
         }
-
     }
-
 }
 
 
