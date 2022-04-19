@@ -17,7 +17,6 @@ import com.team.seven.gocomix.util.setOnSlide
 import com.team.seven.gocomix.util.setOnStateChange
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     layoutRes = R.layout.fragment_home

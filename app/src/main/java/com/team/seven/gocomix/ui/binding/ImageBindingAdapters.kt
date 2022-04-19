@@ -15,8 +15,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.util.dimenInDp
 import com.team.seven.gocomix.util.themeColor
-import jp.wasabeef.glide.transformations.BlurTransformation
 import java.lang.IllegalStateException
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 object ImageBindingAdapters {
 
