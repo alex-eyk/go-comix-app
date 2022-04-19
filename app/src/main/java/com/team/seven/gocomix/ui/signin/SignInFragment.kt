@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.ui.login
+package com.team.seven.gocomix.ui.signin
 
 import androidx.fragment.app.viewModels
 import com.team.seven.gocomix.R
