@@ -1,4 +1,4 @@
-@file:Suppress("SpellCheckingInspection")
+@file:Suppress("SpellCheckingInspection", "MagicNumber")
 
 package com.team.seven.gocomix.repo
 
