@@ -2,7 +2,7 @@ package com.team.seven.gocomix.di
 
 import com.google.firebase.auth.FirebaseAuth
 import com.team.seven.gocomix.repo.ComixRepository
-import com.team.seven.gocomix.repo.ComixRepositoryFakeImpl
+import com.team.seven.gocomix.repo.net.ComixNetRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideComixRepository(): ComixRepository {
-        return ComixRepositoryFakeImpl()
+        return ComixNetRepository()
     }
 
     @Singleton
