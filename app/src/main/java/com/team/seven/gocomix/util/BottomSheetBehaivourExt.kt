@@ -1,3 +1,4 @@
+@file:Suppress("EmptyFunctionBlock")
 package com.team.seven.gocomix.util
 
 import android.view.View
