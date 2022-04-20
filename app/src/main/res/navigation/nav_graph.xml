@@ -33,7 +33,9 @@
 
         <action
                 android:id="@+id/action_home_to_pages"
-                app:destination="@id/navigation_pages">
+                app:destination="@id/navigation_pages"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left">
 
         </action>
     </fragment>
