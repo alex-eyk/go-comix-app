@@ -36,7 +36,7 @@
                 android:id="@+id/action_navigation_profile_to_navigation_sign_in"
                 app:destination="@id/navigation_sign_in"
                 app:popUpToInclusive="true"
-                app:popUpTo="@id/navigation_splash" />
+                app:popUpTo="@id/navigation_profile" />
     </fragment>
 
     <fragment
