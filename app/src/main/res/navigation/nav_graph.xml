@@ -52,7 +52,7 @@
 
     <fragment
             android:id="@+id/navigation_sign_in"
-            android:name="com.team.seven.gocomix.ui.login.SignInFragment"
+            android:name="com.team.seven.gocomix.ui.signin.SignInFragment"
             android:label="Login"
             tools:layout="@layout/fragment_sign_in" >
         <action
