@@ -5,6 +5,6 @@ data class Comix(
     val cover: Image,
     val description: String,
     val id: Int,
-    val rating: Double,
+    val rating: Float,
     val title: String
 )

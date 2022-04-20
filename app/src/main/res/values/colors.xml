@@ -14,4 +14,5 @@
     <color name="inverse_accent_text">@color/white</color>
     <color name="shadow_color">#80000000</color>
     <color name="fogging">#40000000</color>
+    <color name="strong_fogging">#CC000000</color>
 </resources>
