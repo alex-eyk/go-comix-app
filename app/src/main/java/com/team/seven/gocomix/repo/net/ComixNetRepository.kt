@@ -12,7 +12,6 @@ class ComixNetRepository : ComixRepository {
         } catch (e: Throwable) {
             Result.failure(e)
         }
-
     }
 
     override suspend fun getPages(comixId: Int): Result<List<Page>> {
@@ -23,5 +22,3 @@ class ComixNetRepository : ComixRepository {
         }
     }
 }
-
-
