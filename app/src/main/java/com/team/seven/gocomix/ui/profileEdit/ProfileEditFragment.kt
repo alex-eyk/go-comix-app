@@ -16,10 +16,10 @@ class ProfileEditFragment : AbstractFragment<ProfileEditFragmentBinding, Profile
     override fun onBindingCreated() {
         super.onBindingCreated()
         binding.profileEditCloseButton.setOnClickListener {
-            navController.navigate(R.id.action_profileEditFragment_to_navigation_profile)
+            navController.popBackStack()
         }
         binding.profileEditSaveButton.setOnClickListener {
-            navController.navigate(R.id.action_profileEditFragment_to_navigation_profile)
+            navController.popBackStack()
             viewModel.edit()
         }
     }
