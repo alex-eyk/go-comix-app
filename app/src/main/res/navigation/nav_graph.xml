@@ -34,7 +34,9 @@
                 app:destination="@id/profileEditFragment" />
         <action
                 android:id="@+id/action_navigation_profile_to_navigation_sign_in"
-                app:destination="@id/navigation_sign_in" />
+                app:destination="@id/navigation_sign_in"
+                app:popUpToInclusive="true"
+                app:popUpTo="@id/navigation_splash" />
     </fragment>
 
     <fragment
