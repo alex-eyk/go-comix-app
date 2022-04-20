@@ -34,6 +34,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         interestListener = {
             openBottomSheet(it)
         }
+        readListener = {
+            openComic(it)
+        }
     }
 
     override fun onBindingCreated() {
@@ -97,5 +100,10 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         binding.comicInfoBottomSheet.comic = comic
         binding.executePendingBindings()
         bottomSheetBehavior.expand()
+    }
+
+    private fun openComic(comic: Comix) {
+        val action = HomeFragmentDirections.actionHomeToPages(comic.id)
+        navController.navigate(action)
     }
 }
