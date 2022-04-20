@@ -1,4 +1,4 @@
-@file:Suppress("SpellCheckingInspection")
+@file:Suppress("SpellCheckingInspection", "MagicNumber")
 
 package com.team.seven.gocomix.repo
 
@@ -6,10 +6,12 @@ import com.team.seven.gocomix.model.Author
 import com.team.seven.gocomix.model.Comix
 import com.team.seven.gocomix.model.Image
 import com.team.seven.gocomix.model.Page
+import kotlinx.coroutines.delay
 
 class ComixRepositoryFakeImpl : ComixRepository {
 
     override suspend fun getComics(): Result<List<Comix>> {
+        delay((500 + Math.random() * 1000).toLong())
         return Result.success(
             listOf(
                 Comix(
@@ -25,9 +27,10 @@ class ComixRepositoryFakeImpl : ComixRepository {
                         loading = "https://drive.google.com/uc?export=view" +
                             "&id=1a2EcpaofMpDLu2POzW22J-4w9qjDxgxz"
                     ),
-                    rating = 5.0,
+                    rating = 5.0F,
                     author = Author(
                         id = 1,
+                        photo = null,
                         login = "Some Author",
                         email = "example@google.com"
                     )
@@ -45,9 +48,10 @@ class ComixRepositoryFakeImpl : ComixRepository {
                         loading = "https://drive.google.com/uc?export=view&id=" +
                             "1Z-FAnX4o3bz2Dn5YZQv5B-GZ3ESKIiXu"
                     ),
-                    rating = 4.5,
+                    rating = 4.5F,
                     author = Author(
                         id = 1,
+                        photo = null,
                         login = "Some Author",
                         email = "example@google.com"
                     )
