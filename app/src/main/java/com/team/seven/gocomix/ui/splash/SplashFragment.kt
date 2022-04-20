@@ -21,10 +21,10 @@ class SplashFragment : AbstractFragment<FragmentSplashBinding, SplashViewModel>(
                 is AuthState.Loading -> {
                 }
                 is AuthState.Logged -> {
-                    navController.navigate(R.id.navigation_home)
+                    navController.navigate(R.id.action_splash_to_home)
                 }
                 is AuthState.NotLogged -> {
-                    navController.navigate(R.id.navigation_sign_in)
+                    navController.navigate(R.id.action_splash_to_sign_in)
                 }
             }
         }
