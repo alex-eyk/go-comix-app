@@ -1,7 +1,6 @@
 package com.team.seven.gocomix.di
 
 import com.google.firebase.auth.FirebaseAuth
-import com.team.seven.gocomix.model.Constants
 import com.team.seven.gocomix.repo.ComixRepository
 import com.team.seven.gocomix.repo.net.ComixNetRepository
 import com.team.seven.gocomix.repo.net.ComixService
@@ -17,6 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    private const val COMICS_SERVER_URL = "http://185.46.10.196:8080"
+
     @Singleton
     @Provides
     fun provideComixService(retrofit: Retrofit): ComixService {
@@ -27,7 +28,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(COMICS_SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
