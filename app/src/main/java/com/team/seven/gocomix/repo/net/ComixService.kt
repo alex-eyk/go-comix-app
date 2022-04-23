@@ -5,7 +5,8 @@ import com.team.seven.gocomix.model.Page
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface ComixApi {
+interface ComixService {
+
     @GET("comix/all")
     suspend fun getComix(): List<Comix>
 

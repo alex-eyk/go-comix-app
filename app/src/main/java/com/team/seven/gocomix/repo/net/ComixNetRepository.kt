@@ -3,12 +3,15 @@ package com.team.seven.gocomix.repo.net
 import com.team.seven.gocomix.model.Comix
 import com.team.seven.gocomix.model.Page
 import com.team.seven.gocomix.repo.ComixRepository
+import javax.inject.Inject
 
-class ComixNetRepository : ComixRepository {
+class ComixNetRepository @Inject constructor(
+    private val comixService: ComixService
+) : ComixRepository {
 
     override suspend fun getComics(): Result<List<Comix>> {
         return try {
-            Result.success(RetrofitInstance.comixApi.getComix())
+            Result.success(comixService.getComix())
         } catch (e: Throwable) {
             Result.failure(e)
         }
@@ -16,7 +19,7 @@ class ComixNetRepository : ComixRepository {
 
     override suspend fun getPages(comixId: Int): Result<List<Page>> {
         return try {
-            Result.success(RetrofitInstance.comixApi.getPages(comixId))
+            Result.success(comixService.getPages(comixId))
         } catch (e: Throwable) {
             Result.failure(e)
         }
