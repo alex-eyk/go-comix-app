@@ -16,6 +16,7 @@ class ComicsPreviewAdapter : ListAdapter<Comix, ComicViewHolder>(
 ) {
 
     var interestListener: ((comic: Comix) -> Unit)? = null
+    var readListener: ((comic: Comix) -> Unit)? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -45,6 +46,10 @@ class ComicsPreviewAdapter : ListAdapter<Comix, ComicViewHolder>(
         fun bindTo(comic: Comix) {
             binding.comix = comic
             binding.infoClickListener = interestListener ?: {}
+            binding.comixPreviewCoverImage.setOnLongClickListener {
+                readListener?.invoke(comic)
+                return@setOnLongClickListener true
+            }
             binding.executePendingBindings()
         }
     }
