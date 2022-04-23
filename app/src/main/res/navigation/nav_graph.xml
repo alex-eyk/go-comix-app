@@ -35,16 +35,14 @@
                 android:id="@+id/action_home_to_pages"
                 app:destination="@id/navigation_pages"
                 app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left">
+                app:exitAnim="@anim/slide_out_left" />
 
-        </action>
     </fragment>
 
     <fragment
             android:id="@+id/navigation_favourite"
             android:name="com.team.seven.gocomix.ui.favourite.FavouriteFragment"
             android:label="Favourite" />
-
 
     <fragment
             android:id="@+id/navigation_profile"
@@ -55,6 +53,12 @@
         <action
                 android:id="@+id/action_profile_to_edit"
                 app:destination="@id/profile_edit_fragment" />
+
+        <action
+                android:id="@+id/action_profile_to_sign_in"
+                app:destination="@id/navigation_sign_in"
+                app:popUpToInclusive="true"
+                app:popUpTo="@id/navigation_profile" />
 
     </fragment>
 
@@ -70,7 +74,13 @@
             android:id="@+id/navigation_sign_in"
             android:name="com.team.seven.gocomix.ui.signin.SignInFragment"
             android:label="Login"
-            tools:layout="@layout/fragment_sign_in" />
+            tools:layout="@layout/fragment_sign_in" >
+
+        <action
+                android:id="@+id/action_sign_in_to_home"
+                app:destination="@id/navigation_home" />
+
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_pages"
@@ -81,6 +91,6 @@
         <argument
                 android:name="comic_id"
                 app:argType="integer" />
-    </fragment>
 
+    </fragment>
 </navigation>
