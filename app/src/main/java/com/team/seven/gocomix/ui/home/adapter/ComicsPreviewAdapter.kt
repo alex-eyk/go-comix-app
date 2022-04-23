@@ -15,6 +15,9 @@ class ComicsPreviewAdapter : ListAdapter<Comix, ComicViewHolder>(
     ComicDiffCallback()
 ) {
 
+    var interestListener: ((comic: Comix) -> Unit)? = null
+    var readListener: ((comic: Comix) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -36,13 +39,17 @@ class ComicsPreviewAdapter : ListAdapter<Comix, ComicViewHolder>(
         holder.bindTo(getItem(position))
     }
 
-    class ComicViewHolder internal constructor(
+    inner class ComicViewHolder internal constructor(
         private val binding: ItemComixPreviewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindTo(comic: Comix) {
             binding.comix = comic
-            binding.infoClickListener = {}
+            binding.infoClickListener = interestListener ?: {}
+            binding.comixPreviewCoverImage.setOnLongClickListener {
+                readListener?.invoke(comic)
+                return@setOnLongClickListener true
+            }
             binding.executePendingBindings()
         }
     }

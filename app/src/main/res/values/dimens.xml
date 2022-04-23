@@ -53,4 +53,5 @@
     <dimen name="title_shadow_radius">10</dimen>
     <dimen name="icon_size">48dp</dimen>
     <dimen name="icon_size_tablets">72dp</dimen>
+    <dimen name="bottom_sheet_radius">16dp</dimen>
 </resources>

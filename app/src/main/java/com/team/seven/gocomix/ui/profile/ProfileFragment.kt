@@ -16,7 +16,11 @@ class ProfileFragment : AbstractFragment<FragmentProfileBinding, ProfileViewMode
     override fun onBindingCreated() {
         super.onBindingCreated()
         binding.profileEditButton.setOnClickListener {
-            navController.navigate(R.id.action_navigation_profile_to_profileEditFragment)
+            navController.navigate(R.id.action_profile_to_edit)
+        }
+        binding.profileLogoutButton.setOnClickListener {
+            navController.navigate(R.id.action_profile_to_sign_in)
+            viewModel.signOut()
         }
     }
 }
