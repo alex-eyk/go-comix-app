@@ -24,7 +24,7 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
 
     override fun onBindingCreated() {
         super.binding.loginLoginButton.setOnClickListener {
-            navController.navigate(R.id.action_navigation_sign_in_to_navigation_home)
+            navController.navigate(R.id.action_sign_in_to_home)
         }
         navBar.visibility = View.GONE
     }

@@ -19,7 +19,7 @@ class ProfileFragment : AbstractFragment<FragmentProfileBinding, ProfileViewMode
             navController.navigate(R.id.action_profile_to_edit)
         }
         binding.profileLogoutButton.setOnClickListener {
-            navController.navigate(R.id.action_navigation_profile_to_navigation_sign_in)
+            navController.navigate(R.id.action_profile_to_sign_in)
             viewModel.signOut()
         }
     }
