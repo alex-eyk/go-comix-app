@@ -20,6 +20,18 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
+    }
+
+    @Singleton
+    @Provides
+    fun provideComicRepository(comixService: ComixService): ComixRepository {
+        return ComixNetRepository(comixService)
+    }
+
+    @Singleton
+    @Provides
     fun provideComixService(retrofit: Retrofit): ComixService {
         return retrofit.create(ComixService::class.java)
     }
@@ -31,17 +43,5 @@ object AppModule {
             .baseUrl(COMICS_SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideComicRepository(comixService: ComixService): ComixRepository {
-        return ComixNetRepository(comixService)
-    }
-
-    @Singleton
-    @Provides
-    fun provideFirebaseAuth(): FirebaseAuth {
-        return FirebaseAuth.getInstance()
     }
 }
