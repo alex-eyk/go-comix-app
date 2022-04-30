@@ -45,11 +45,8 @@ class ComicsPreviewAdapter : ListAdapter<Comix, ComicViewHolder>(
 
         fun bindTo(comic: Comix) {
             binding.comix = comic
-            binding.infoClickListener = interestListener ?: {}
-            binding.comixPreviewCoverImage.setOnLongClickListener {
-                readListener?.invoke(comic)
-                return@setOnLongClickListener true
-            }
+            binding.infoListener = interestListener ?: {}
+            binding.readListener = readListener ?: {}
             binding.executePendingBindings()
         }
     }
