@@ -1,11 +1,13 @@
 package com.team.seven.gocomix.ui.signin
 
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignInBinding
 import com.team.seven.gocomix.ui.AbstractFragment
+import com.team.seven.gocomix.ui.home.ComicsUiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +26,7 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
 
     override fun onBindingCreated() {
         super.binding.loginLoginButton.setOnClickListener {
-            navController.navigate(R.id.action_sign_in_to_home)
+            viewModel.signIn(binding.loginUsernameEditText.text.toString(), binding.loginPasswordEditText.text.toString())
         }
         navBar.visibility = View.GONE
     }
@@ -32,5 +34,25 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
     override fun onDestroyView() {
         super.onDestroyView()
         navBar.visibility = View.VISIBLE
+    }
+
+    override suspend fun onCollectStates() {
+        viewModel.signInState.collect {
+            handleSignInState(it)
+        }
+    }
+
+    private fun handleSignInState(signInState: SignInState) {
+        when (signInState) {
+            is SignInState.Loading ->{
+
+            }
+            is SignInState.Success -> {
+                navController.navigate(R.id.navigation_home)
+            }
+            is SignInState.Error -> {
+                Log.d("d", "sacq")
+            }
+        }
     }
 }
