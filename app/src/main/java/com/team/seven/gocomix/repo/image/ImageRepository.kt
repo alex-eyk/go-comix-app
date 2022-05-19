@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 interface ImageRepository {
 
-    suspend fun getImage(id: Long): ImageResult
+    suspend fun getImage(id: String): ImageResult
 
 }
 

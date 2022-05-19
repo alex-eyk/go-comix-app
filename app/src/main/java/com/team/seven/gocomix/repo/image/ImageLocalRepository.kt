@@ -4,9 +4,9 @@ import android.graphics.Bitmap
 
 interface ImageLocalRepository : ImageRepository {
 
-    suspend fun saveImage(id: Long, image: Bitmap): SaveResult
+    suspend fun saveImage(id: String, image: Bitmap): SaveResult
 
-    fun exists(id: Long): Boolean
+    fun exists(id: String): Boolean
 }
 
 sealed class SaveResult {
