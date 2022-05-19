@@ -12,10 +12,10 @@ class LocalRecognizeService() : RecognizeService {
     private val recognizer = TextRecognition
         .getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
-    override suspend fun recognize(image: Bitmap): Result<List<String>> = suspendCoroutine{
-        recognizer.process(InputImage.fromBitmap(image,0))
+    override suspend fun recognize(image: Bitmap): Result<List<String>> = suspendCoroutine {
+        recognizer.process(InputImage.fromBitmap(image, 0))
             .addOnSuccessListener { text ->
-                val textBlocks = text.textBlocks.map{it -> it.toString()}
+                val textBlocks = text.textBlocks.map { it -> it.toString() }
                 it.resume(Result.Success(textBlocks))
             }
             .addOnFailureListener { exception ->

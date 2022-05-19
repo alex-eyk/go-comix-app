@@ -41,8 +41,5 @@ class LocalTranslateService() : TranslateService {
                     it.resume(Result.Failure(exception))
                 }
         }
-
-
-
     }
 }
