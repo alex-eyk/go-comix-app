@@ -1,0 +1,16 @@
+package com.team.seven.gocomix.repo.image
+
+import android.graphics.Bitmap
+
+interface ImageRepository {
+
+    suspend fun getImage(id: Long): ImageResult
+
+}
+
+sealed class ImageResult {
+
+    object Loading : ImageResult()
+    data class Success(val image: Bitmap) : ImageResult()
+    data class Failure(val error: Throwable) : ImageResult()
+}
