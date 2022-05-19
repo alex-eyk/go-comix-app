@@ -4,5 +4,5 @@ import com.team.seven.gocomix.domaim.Result
 
 interface TranslateService {
 
-    suspend fun translateIntoRussian(textBlocks: List<String>): Result<List<String>>
+    suspend fun translateIntoRussian(textBlock: String): Result<String>
 }
