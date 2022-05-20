@@ -5,9 +5,19 @@
 
     <data>
 
+        <import type="com.team.seven.gocomix.model.Comix" />
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
         <variable
                 name="comic"
-                type="com.team.seven.gocomix.model.Comix" />
+                type="Comix" />
+
+        <variable
+                name="saveListener"
+                type="Function1&lt;Comix, Unit>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -131,6 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/components_small_margin"
+                android:onClick="@{() -> saveListener.invoke(comic)}"
                 app:chipIcon="@drawable/ic_bookmark"
                 app:layout_constraintTop_toTopOf="@id/comix_info_rate_chip"
                 app:layout_constraintStart_toEndOf="@id/comix_info_rate_chip"

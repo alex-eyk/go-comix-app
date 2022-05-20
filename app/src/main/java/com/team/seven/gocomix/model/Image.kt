@@ -1,6 +1,6 @@
 package com.team.seven.gocomix.model
 
-@Deprecated("use API method image/{id} instead")
+@Deprecated("Use API method image/{id} with quality parameter instead")
 data class Image(
     val id: Long,
     val origin: String,

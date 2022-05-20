@@ -1,10 +1,11 @@
-package com.team.seven.gocomix.data.repo
+package com.team.seven.gocomix.data.repo.image
 
 import android.graphics.Bitmap
+import com.team.seven.gocomix.data.entity.Quality
 
 interface ImageRepository {
 
-    suspend fun getImage(id: String): ImageResult
+    suspend fun getImage(id: String, quality: Quality): ImageResult
 }
 
 sealed class ImageResult {
