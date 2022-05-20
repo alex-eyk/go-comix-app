@@ -1,5 +1,6 @@
 package com.team.seven.gocomix.di
 
+import com.team.seven.gocomix.data.net.ComicService
 import com.team.seven.gocomix.data.net.ImageService
 import com.team.seven.gocomix.repo.ComixRepository
 import com.team.seven.gocomix.repo.net.ComixNetRepository
@@ -34,6 +35,12 @@ object NetworkModule {
     @Provides
     fun provideImageService(retrofit: Retrofit): ImageService {
         return retrofit.create(ImageService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideComicService(retrofit: Retrofit): ComicService {
+        return retrofit.create(ComicService::class.java)
     }
 
     @Singleton
