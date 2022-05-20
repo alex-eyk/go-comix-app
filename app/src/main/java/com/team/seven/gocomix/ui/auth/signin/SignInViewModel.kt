@@ -8,11 +8,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.team.seven.gocomix.ui.auth.signin.exception.EmptyEmailException
 import com.team.seven.gocomix.ui.auth.signin.exception.EmptyPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
@@ -38,7 +38,8 @@ class SignInViewModel @Inject constructor(
             else -> {
                 viewModelScope.launch(Dispatchers.IO) {
                     firebaseAuth.signInWithEmailAndPassword(
-                        email.value, password.value
+                        email.value,
+                        password.value
                     )
                         .addOnCompleteListener {
                             _signInState.value = SignInState.by(it)

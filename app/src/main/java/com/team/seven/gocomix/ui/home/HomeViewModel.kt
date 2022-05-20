@@ -34,11 +34,9 @@ class HomeViewModel @Inject constructor(
     }
 
     fun saveToFavourites(comix: Comix) {
-
     }
 
     fun saveToFavourites(comic: Comic) {
-
     }
 }
 

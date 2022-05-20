@@ -1,8 +1,5 @@
 package com.team.seven.gocomix.model
 
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
-
 @Deprecated(
     message = "Use new Comic object with correct name and without link to image",
     ReplaceWith("com.team.seven.gocomix.data.entity.Comic")
