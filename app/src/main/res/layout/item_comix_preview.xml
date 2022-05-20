@@ -16,7 +16,11 @@
                 type="Comix" />
 
         <variable
-                name="infoClickListener"
+                name="infoListener"
+                type="Function1&lt;Comix, Unit>" />
+
+        <variable
+                name="readListener"
                 type="Function1&lt;Comix, Unit>" />
     </data>
 
@@ -59,6 +63,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:contentDescription="@string/comix_cover"
+                app:onLongClick="@{() -> readListener.invoke(comix)}"
                 app:image="@{comix.cover.origin}" />
 
         <View
@@ -87,7 +92,7 @@
                 style="@style/ThemeOverlay.Material3.FloatingActionButton.Primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> infoClickListener.invoke(comix)}"
+                android:onClick="@{() -> infoListener.invoke(comix)}"
                 app:srcCompat="@drawable/ic_menu"
                 app:layout_constraintEnd_toStartOf="@id/end_guideline"
                 app:layout_constraintBottom_toTopOf="@id/top_guideline"
