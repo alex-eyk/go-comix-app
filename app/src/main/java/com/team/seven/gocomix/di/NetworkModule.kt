@@ -3,7 +3,7 @@ package com.team.seven.gocomix.di
 import com.team.seven.gocomix.repo.ComixRepository
 import com.team.seven.gocomix.repo.net.ComixNetRepository
 import com.team.seven.gocomix.repo.net.ComixService
-import com.team.seven.gocomix.repo.net.ImageService
+import com.team.seven.gocomix.data.net.ImageService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

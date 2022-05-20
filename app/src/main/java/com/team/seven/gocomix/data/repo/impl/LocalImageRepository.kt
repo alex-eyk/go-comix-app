@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.repo.image
+package com.team.seven.gocomix.data.repo.impl
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -6,6 +6,9 @@ import android.os.Environment
 import android.os.Environment.MEDIA_MOUNTED
 import android.os.Environment.MEDIA_MOUNTED_READ_ONLY
 import android.util.Log
+import com.team.seven.gocomix.data.repo.ImageLocalRepository
+import com.team.seven.gocomix.data.repo.ImageResult
+import com.team.seven.gocomix.data.repo.SaveResult
 import com.team.seven.gocomix.repo.exception.ImageAlreadyExistsException
 import com.team.seven.gocomix.repo.exception.ImageNotDecodedException
 import com.team.seven.gocomix.repo.exception.StorageNotReadableException
