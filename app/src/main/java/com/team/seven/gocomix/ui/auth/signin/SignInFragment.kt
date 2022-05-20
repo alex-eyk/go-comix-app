@@ -1,14 +1,11 @@
 package com.team.seven.gocomix.ui.auth.signin
 
 import android.util.Log
-import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignInBinding
-import com.team.seven.gocomix.ui.AbstractFragment
 import com.team.seven.gocomix.ui.auth.AbstractAuthFragment
 import com.team.seven.gocomix.ui.auth.signin.exception.EmptyEmailException
 import com.team.seven.gocomix.ui.auth.signin.exception.EmptyPasswordException
