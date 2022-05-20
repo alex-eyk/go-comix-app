@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.data.repo.impl
+package com.team.seven.gocomix.data.repo.image.impl
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -6,13 +6,13 @@ import android.os.Environment
 import android.os.Environment.MEDIA_MOUNTED
 import android.os.Environment.MEDIA_MOUNTED_READ_ONLY
 import android.util.Log
-import com.team.seven.gocomix.data.repo.ImageLocalRepository
-import com.team.seven.gocomix.data.repo.ImageResult
-import com.team.seven.gocomix.data.repo.SaveResult
-import com.team.seven.gocomix.repo.exception.ImageAlreadyExistsException
-import com.team.seven.gocomix.repo.exception.ImageNotDecodedException
-import com.team.seven.gocomix.repo.exception.StorageNotReadableException
-import com.team.seven.gocomix.repo.exception.StorageNotWritableException
+import com.team.seven.gocomix.data.repo.image.ImageLocalRepository
+import com.team.seven.gocomix.data.repo.image.ImageResult
+import com.team.seven.gocomix.data.repo.image.SaveResult
+import com.team.seven.gocomix.data.repo.image.exception.ImageAlreadyExistsException
+import com.team.seven.gocomix.data.repo.image.exception.ImageNotDecodedException
+import com.team.seven.gocomix.data.repo.image.exception.StorageNotReadableException
+import com.team.seven.gocomix.data.repo.image.exception.StorageNotWritableException
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -20,7 +20,7 @@ import java.io.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LocalImageRepository : ImageLocalRepository {
+class ImageLocalRepositoryImpl : ImageLocalRepository {
 
     companion object {
 
