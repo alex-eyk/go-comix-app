@@ -8,7 +8,7 @@ import com.team.seven.gocomix.domaim.Result
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class LocalTranslateService() : TranslateService {
+class LocalTranslateService : TranslateService {
     private val options = TranslatorOptions.Builder()
         .setSourceLanguage(TranslateLanguage.ENGLISH)
         .setTargetLanguage(TranslateLanguage.RUSSIAN)

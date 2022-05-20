@@ -8,7 +8,7 @@ import com.team.seven.gocomix.domaim.Result
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class LocalRecognizeService() : RecognizeService {
+class LocalRecognizeService : RecognizeService {
     private val recognizer = TextRecognition
         .getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
