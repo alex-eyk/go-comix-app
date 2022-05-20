@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepoModule {
 
-    private const val COMICS_SERVER_URL = "http://185.46.10.196:8080"
+    private const val COMICS_SERVER_URL = "http://37.140.199.63:8080"
 
     @Singleton
     @Provides
