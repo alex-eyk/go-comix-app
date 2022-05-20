@@ -20,34 +20,31 @@ class SignInViewModel @Inject constructor(
     private val _signInState: MutableStateFlow<SignInState> =
         MutableStateFlow(SignInState.Loading)
 
-   val signInState: StateFlow<SignInState> = _signInState
+    val signInState: StateFlow<SignInState> = _signInState
 
-    fun signIn(email: String, pasw: String){
+    fun signInWithEmail(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
-                firebaseAuth.signInWithEmailAndPassword(email, pasw)
-                    .addOnCompleteListener{
-                            task-> onCompleteSignInTask(task)
-                    }
-            }
-    }
-    fun onCompleteSignInTask(task: Task<AuthResult>){
-        _signInState.value= SignInState.by(task)
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener {
+                    _signInState.value = SignInState.by(it)
+                }
+        }
     }
 }
 
 sealed class SignInState {
 
-    object Loading: SignInState()
+    object Loading : SignInState()
     object Success : SignInState()
     data class Error(val exception: Throwable) : SignInState()
 
     companion object {
+
         fun by(task: Task<AuthResult>): SignInState {
-            if (task.isSuccessful) {
-                return Success
-            }
-            else {
-                return SignInState.Error(task.exception!!)
+            return when {
+                task.isSuccessful -> Success
+                task.exception != null -> Error(task.exception!!)
+                else -> Error(IllegalStateException())
             }
         }
     }
