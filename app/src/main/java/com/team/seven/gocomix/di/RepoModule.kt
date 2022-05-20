@@ -1,8 +1,8 @@
 package com.team.seven.gocomix.di
 
+import com.team.seven.gocomix.data.net.ImageService
 import com.team.seven.gocomix.data.repo.impl.LocalImageRepository
 import com.team.seven.gocomix.data.repo.impl.RemoteImageRepository
-import com.team.seven.gocomix.data.net.ImageService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

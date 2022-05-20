@@ -15,4 +15,3 @@ sealed class SaveResult {
     object Success : SaveResult()
     data class Failure(val error: Throwable) : SaveResult()
 }
-

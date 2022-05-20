@@ -13,12 +13,12 @@ import com.team.seven.gocomix.repo.exception.ImageAlreadyExistsException
 import com.team.seven.gocomix.repo.exception.ImageNotDecodedException
 import com.team.seven.gocomix.repo.exception.StorageNotReadableException
 import com.team.seven.gocomix.repo.exception.StorageNotWritableException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class LocalImageRepository : ImageLocalRepository {
 
@@ -91,7 +91,8 @@ class LocalImageRepository : ImageLocalRepository {
         val file = File(
             Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES
-            ), COMICS_FOLDER
+            ),
+            COMICS_FOLDER
         )
         if (file.exists() == false) {
             val createResult = file.mkdir()
