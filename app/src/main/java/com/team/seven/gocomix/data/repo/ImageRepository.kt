@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 interface ImageRepository {
 
     suspend fun getImage(id: String): ImageResult
-
 }
 
 sealed class ImageResult {
