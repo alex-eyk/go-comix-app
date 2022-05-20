@@ -1,18 +1,18 @@
-package com.team.seven.gocomix.ui.signin
+package com.team.seven.gocomix.ui.auth.signin
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.team.seven.gocomix.ui.signin.exception.EmptyEmailException
-import com.team.seven.gocomix.ui.signin.exception.EmptyPasswordException
+import com.team.seven.gocomix.ui.auth.signin.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.auth.signin.exception.EmptyPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
@@ -24,17 +24,22 @@ class SignInViewModel @Inject constructor(
 
     val signInState: StateFlow<SignInState> = _signInState
 
-    fun signInWithEmail(email: String, password: String) {
+    val email = MutableStateFlow("")
+    val password = MutableStateFlow("")
+
+    fun signInWithEmail() {
         when {
-            email.isEmpty() -> {
+            email.value.isEmpty() -> {
                 _signInState.value = SignInState.Failure(EmptyEmailException())
             }
-            password.isEmpty() -> {
+            password.value.isEmpty() -> {
                 _signInState.value = SignInState.Failure(EmptyPasswordException())
             }
             else -> {
                 viewModelScope.launch(Dispatchers.IO) {
-                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                    firebaseAuth.signInWithEmailAndPassword(
+                        email.value, password.value
+                    )
                         .addOnCompleteListener {
                             _signInState.value = SignInState.by(it)
                         }
@@ -51,7 +56,7 @@ sealed class SignInState {
 
     object Loading : SignInState()
     object Success : SignInState()
-    data class Failure(val exception: Throwable) : SignInState()
+    data class Failure(val e: Throwable) : SignInState()
 
     companion object {
 
