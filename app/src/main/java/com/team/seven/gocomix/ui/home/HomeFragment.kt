@@ -84,7 +84,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
             setOnSlide { _, slideOffset ->
                 binding.comicsBottomSheetBackground.alpha = slideOffset
             }
-            bottomSheetBehavior.hide()
+            hide()
         }
     }
 

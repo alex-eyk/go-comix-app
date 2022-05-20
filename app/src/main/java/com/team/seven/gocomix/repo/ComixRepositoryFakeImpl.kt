@@ -20,6 +20,7 @@ class ComixRepositoryFakeImpl : ComixRepository {
                     description = "Погрузитесь в мир звездных войн после переломного момента " +
                         "гражданской войны: уничтожения величайшего оружия галактической империи",
                     cover = Image(
+                        id = 1,
                         origin = "https://drive.google.com/uc?export=view" +
                             "&id=1bdWCGz5enXt11ECg0sKeDZJPn84Z8lxW",
                         small = "https://drive.google.com/uc?export=view" +
@@ -41,6 +42,7 @@ class ComixRepositoryFakeImpl : ComixRepository {
                     description = "Погрузитесь в мир звездных войн после переломного момента " +
                         "гражданской войны: уничтожения величайшего оружия галактической империи",
                     cover = Image(
+                        id = 2,
                         origin = "https://drive.google.com/uc?export=view&id=" +
                             "1WIefgzJ49keMfvjutH3rtjlIYmxOEnyM",
                         small = "https://drive.google.com/uc?export=view&id=" +

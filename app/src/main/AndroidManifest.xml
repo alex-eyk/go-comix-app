@@ -3,6 +3,9 @@
         package="com.team.seven.gocomix">
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <permission android:name="WRITE_EXTERNAL_STORAGE" />
+    <permission android:name="READ_EXTERNAL_STORAGE" />
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
