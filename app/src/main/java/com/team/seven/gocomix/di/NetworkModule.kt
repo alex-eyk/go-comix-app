@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val COMICS_SERVER_URL = "http://185.46.10.196:8080"
+    private const val COMICS_SERVER_URL = "http://37.140.199.63:8080"
 
     @Singleton
     @Provides
