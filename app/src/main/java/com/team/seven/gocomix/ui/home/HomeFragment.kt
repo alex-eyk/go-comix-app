@@ -2,7 +2,7 @@ package com.team.seven.gocomix.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -22,7 +22,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     layoutRes = R.layout.fragment_home
 ) {
 
-    override val viewModel: HomeViewModel by viewModels()
+    override val viewModel by navGraphViewModels<HomeViewModel>(R.id.nav_graph_xml) {
+        defaultViewModelProviderFactory
+    }
 
     private val bottomSheetBehavior by lazy {
         BottomSheetBehavior.from(
@@ -35,7 +37,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
             openBottomSheet(it)
         }
         readListener = {
-           // openComic(it)
+            openComic(it)
         }
     }
 
@@ -66,6 +68,10 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.updateComics()
+        if (viewModel.listState != null) {
+            binding.comicsRecyclerView.layoutManager?.onRestoreInstanceState(viewModel.listState)
+            viewModel.listState = null
+        }
     }
 
     private fun handleBottomSheetState() {
@@ -101,8 +107,14 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         binding.executePendingBindings()
         bottomSheetBehavior.expand()
     }
-//    private fun openComic(comic: Comix) {
-//       val action = HomeFragmentDirections.actionHomeToPages(comic.id)
-//       navController.navigate(action)
-//    }
+
+    private fun openComic(comic: Comix) {
+        val action = HomeFragmentDirections.actionHomeToPages(comic.id)
+        navController.navigate(action)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.listState = binding.comicsRecyclerView.layoutManager?.onSaveInstanceState()
+    }
 }
