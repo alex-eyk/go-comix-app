@@ -15,7 +15,7 @@ class LocalRecognizeService() : RecognizeService {
     override suspend fun recognize(image: Bitmap): Result<List<String>> = suspendCoroutine {
         recognizer.process(InputImage.fromBitmap(image, 0))
             .addOnSuccessListener { text ->
-                val textBlocks = text.textBlocks.map { it -> it.toString() }
+                val textBlocks = text.textBlocks.map { it.text }
                 it.resume(Result.Success(textBlocks))
             }
             .addOnFailureListener { exception ->
