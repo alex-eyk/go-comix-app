@@ -1,6 +1,7 @@
 package com.team.seven.gocomix.data.repo.impl
 
 import android.graphics.BitmapFactory
+import com.team.seven.gocomix.data.entity.Quality
 import com.team.seven.gocomix.data.net.ImageService
 import com.team.seven.gocomix.data.repo.ImageRepository
 import com.team.seven.gocomix.data.repo.ImageResult
@@ -16,10 +17,10 @@ class RemoteImageRepository(
     private val imageService: ImageService
 ) : ImageRepository {
 
-    override suspend fun getImage(id: String): ImageResult {
+    override suspend fun getImage(id: String, quality: Quality): ImageResult {
         return withContext(Dispatchers.IO) {
             val netStream: InputStream
-            val result = imageService.getImage(id)
+            val result = imageService.getImage(id, quality)
             if (result.isSuccessful) {
                 netStream = result.body()?.byteStream()
                     ?: return@withContext ImageResult.Failure(NoImageFoundException())

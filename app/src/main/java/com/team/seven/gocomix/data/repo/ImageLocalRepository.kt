@@ -2,7 +2,9 @@ package com.team.seven.gocomix.data.repo
 
 import android.graphics.Bitmap
 
-interface ImageLocalRepository : ImageRepository {
+interface ImageLocalRepository {
+
+    suspend fun getImage(id: String): ImageResult
 
     suspend fun saveImage(id: String, image: Bitmap): SaveResult
 
