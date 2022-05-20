@@ -44,6 +44,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onBindingCreated() {
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.comicsRecyclerView)
+
         binding.apply {
             comicsRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
@@ -55,8 +56,25 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
                 }
                 isClickable = false
             }
+            comicInfoBottomSheet.saveListener = {
+                viewModel.saveToFavourites(it)
+            }
         }
         handleBottomSheetState()
+    }
+
+    private fun handleBottomSheetState() {
+        bottomSheetBehavior.apply {
+            setOnStateChange { _, state ->
+                binding.comicsBottomSheetBackground.apply {
+                    isClickable = state != BottomSheetBehavior.STATE_HIDDEN
+                }
+            }
+            setOnSlide { _, slideOffset ->
+                binding.comicsBottomSheetBackground.alpha = slideOffset
+            }
+            hide()
+        }
     }
 
     override suspend fun onCollectStates() {
@@ -71,20 +89,6 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         if (viewModel.listState != null) {
             binding.comicsRecyclerView.layoutManager?.onRestoreInstanceState(viewModel.listState)
             viewModel.listState = null
-        }
-    }
-
-    private fun handleBottomSheetState() {
-        bottomSheetBehavior.apply {
-            setOnStateChange { _, state ->
-                binding.comicsBottomSheetBackground.apply {
-                    isClickable = state != BottomSheetBehavior.STATE_HIDDEN
-                }
-            }
-            setOnSlide { _, slideOffset ->
-                binding.comicsBottomSheetBackground.alpha = slideOffset
-            }
-            hide()
         }
     }
 
@@ -103,8 +107,10 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun openBottomSheet(comic: Comix) {
-        binding.comicInfoBottomSheet.comic = comic
-        binding.executePendingBindings()
+        binding.apply {
+            comicInfoBottomSheet.comic = comic
+            executePendingBindings()
+        }
         bottomSheetBehavior.expand()
     }
 
