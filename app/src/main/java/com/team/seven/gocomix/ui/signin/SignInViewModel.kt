@@ -5,12 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.team.seven.gocomix.ui.signin.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.signin.exception.EmptyPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
@@ -23,11 +25,24 @@ class SignInViewModel @Inject constructor(
     val signInState: StateFlow<SignInState> = _signInState
 
     fun signInWithEmail(email: String, password: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener {
-                    _signInState.value = SignInState.by(it)
+        when {
+            email.isEmpty() -> {
+                _signInState.value = SignInState.Failure(EmptyEmailException())
+            }
+            password.isEmpty() -> {
+                _signInState.value = SignInState.Failure(EmptyPasswordException())
+            }
+            else -> {
+                viewModelScope.launch(Dispatchers.IO) {
+                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener {
+                            _signInState.value = SignInState.by(it)
+                        }
+                        .addOnFailureListener {
+                            _signInState.value = SignInState.Failure(it)
+                        }
                 }
+            }
         }
     }
 }
@@ -36,15 +51,15 @@ sealed class SignInState {
 
     object Loading : SignInState()
     object Success : SignInState()
-    data class Error(val exception: Throwable) : SignInState()
+    data class Failure(val exception: Throwable) : SignInState()
 
     companion object {
 
         fun by(task: Task<AuthResult>): SignInState {
             return when {
                 task.isSuccessful -> Success
-                task.exception != null -> Error(task.exception!!)
-                else -> Error(IllegalStateException())
+                task.exception != null -> Failure(task.exception!!)
+                else -> Failure(IllegalStateException())
             }
         }
     }
