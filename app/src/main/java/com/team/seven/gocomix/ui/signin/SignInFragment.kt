@@ -7,6 +7,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignInBinding
 import com.team.seven.gocomix.ui.AbstractFragment
+import com.team.seven.gocomix.ui.signin.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.signin.exception.EmptyPasswordException
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,8 +49,19 @@ class SignInFragment : AbstractFragment<FragmentSignInBinding, SignInViewModel>(
             is SignInState.Success -> {
                 navController.navigate(R.id.navigation_home)
             }
-            is SignInState.Error -> {
-                Log.e(TAG, "Unable to sign in", state.exception)
+            is SignInState.Failure -> {
+                when (state.exception) {
+                    is EmptyEmailException -> {
+                        Log.e(TAG, "Empty email", state.exception)
+                    }
+                    is EmptyPasswordException -> {
+                        Log.e(TAG, "Empty password", state.exception)
+                    }
+                    else -> throw IllegalArgumentException(
+                        "Unexpected exception: " +
+                            state.exception.javaClass.canonicalName
+                    )
+                }
             }
         }
     }
