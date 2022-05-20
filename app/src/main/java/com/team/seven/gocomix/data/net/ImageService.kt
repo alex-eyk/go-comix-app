@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.repo.net
+package com.team.seven.gocomix.data.net
 
 import okhttp3.ResponseBody
 import retrofit2.Response
