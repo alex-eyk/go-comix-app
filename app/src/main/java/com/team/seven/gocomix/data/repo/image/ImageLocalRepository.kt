@@ -1,4 +1,4 @@
-package com.team.seven.gocomix.data.repo
+package com.team.seven.gocomix.data.repo.image
 
 import android.graphics.Bitmap
 

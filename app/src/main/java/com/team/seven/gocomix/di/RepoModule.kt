@@ -1,8 +1,8 @@
 package com.team.seven.gocomix.di
 
 import com.team.seven.gocomix.data.net.ImageService
-import com.team.seven.gocomix.data.repo.impl.LocalImageRepository
-import com.team.seven.gocomix.data.repo.impl.RemoteImageRepository
+import com.team.seven.gocomix.data.repo.image.impl.ImageLocalRepositoryImpl
+import com.team.seven.gocomix.data.repo.image.impl.ImageRemoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,13 +17,13 @@ object RepoModule {
 
     @Singleton
     @Provides
-    fun provideLocalImageRepository(): LocalImageRepository {
-        return LocalImageRepository()
+    fun provideLocalImageRepository(): ImageLocalRepositoryImpl {
+        return ImageLocalRepositoryImpl()
     }
 
     @Singleton
     @Provides
-    fun provideRemoteImageRepository(imageService: ImageService): RemoteImageRepository {
-        return RemoteImageRepository(imageService)
+    fun provideRemoteImageRepository(imageService: ImageService): ImageRemoteRepository {
+        return ImageRemoteRepository(imageService)
     }
 }
