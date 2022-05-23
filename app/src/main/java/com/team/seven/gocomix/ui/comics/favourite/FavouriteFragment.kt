@@ -6,7 +6,6 @@ import com.team.seven.gocomix.databinding.FragmentFavouriteBinding
 import com.team.seven.gocomix.ui.AbstractFragment
 import com.team.seven.gocomix.ui.UiState
 import com.team.seven.gocomix.ui.comics.favourite.adapter.FavouriteComicsAdapter
-import com.team.seven.gocomix.util.Either
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,7 +34,6 @@ class FavouriteFragment : AbstractFragment<FragmentFavouriteBinding, FavouriteVi
                     favouriteComicsAdapter.submitList(it.value)
                 }
                 is UiState.Failure -> {
-
                 }
             }
         }

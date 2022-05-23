@@ -5,14 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.team.seven.gocomix.data.entity.Comic
 import com.team.seven.gocomix.data.repo.comic.ComicsRepository
 import com.team.seven.gocomix.data.repo.comic.FavouriteComicsRepository
-import com.team.seven.gocomix.model.Comix
 import com.team.seven.gocomix.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
