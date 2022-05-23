@@ -23,7 +23,11 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
 
     private val navArgs by navArgs<PagesFragmentArgs>()
 
-    private val pagesAdapter by lazy { PagesAdapter() }
+    private val pagesAdapter = PagesAdapter().apply {
+        loadedListener = {
+            viewModel.onImageLoaded(it)
+        }
+    }
 
     override fun onBindingCreated() {
         val snapHelper = PagerSnapHelper()

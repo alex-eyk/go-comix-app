@@ -16,6 +16,7 @@ import com.team.seven.gocomix.R
 import com.team.seven.gocomix.data.entity.Quality
 import com.team.seven.gocomix.di.NetworkModule
 import com.team.seven.gocomix.util.dimenInDp
+import com.team.seven.gocomix.util.onSuccess
 import com.team.seven.gocomix.util.themeColor
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -28,15 +29,22 @@ object ImageBindingAdapters {
     @BindingAdapter(
         value = [
             "image",
-            "quality"
+            "quality",
+            "loadedListener"
         ],
-        requireAll = true
+        requireAll = false
     )
-    fun setImage(imageView: ImageView, id: Int, quality: Quality) {
+    fun setImage(
+        imageView: ImageView,
+        id: Int,
+        quality: Quality,
+        loadedListener: ((image: Bitmap) -> Unit)?
+    ) {
         val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
                 "?quality=${quality.ordinal}"
         baseGlideImageRequest(imageView, url)
             .placeholder(circularProgressDrawable(imageView.context))
+            .onSuccess { loadedListener?.invoke(it) }
             .into(imageView)
     }
 

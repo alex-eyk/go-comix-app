@@ -3,6 +3,7 @@ package com.team.seven.gocomix.domaim.interactor
 import android.graphics.Bitmap
 import com.team.seven.gocomix.domaim.service.RecognizeService
 import com.team.seven.gocomix.domaim.service.TranslateService
+import com.team.seven.gocomix.ui.UiState
 import com.team.seven.gocomix.util.Either
 
 class TranslateRecognizeUseCaseImpl(
@@ -10,10 +11,23 @@ class TranslateRecognizeUseCaseImpl(
     private val translator: TranslateService
 ) : TranslateRecognizeUseCase {
 
-    override suspend fun execute(image: Bitmap): Either<List<String>> {
+    override suspend fun execute(image: Bitmap): Either<String> {
         return when (val state = recognizer.recognize(image)) {
             is Either.Success -> {
-                translateBlocks(state.value)
+                return when (val translatedState = translateBlocks(state.value)) {
+                    is Either.Success -> {
+                        val textBuilder = StringBuilder()
+                        translatedState.value.forEach {
+                            textBuilder
+                                .append(it)
+                                .appendLine()
+                        }
+                        Either.Success(translatedState.toString())
+                    }
+                    is Either.Failure -> {
+                        translatedState
+                    }
+                }
             }
             is Either.Failure -> {
                 state
