@@ -1,16 +1,14 @@
-package com.team.seven.gocomix.ui.home
+package com.team.seven.gocomix.ui.comics.home
 
-import android.os.Bundle
-import android.view.View
 import androidx.navigation.navGraphViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.team.seven.gocomix.R
+import com.team.seven.gocomix.data.entity.Comic
 import com.team.seven.gocomix.databinding.FragmentHomeBinding
-import com.team.seven.gocomix.model.Comix
 import com.team.seven.gocomix.ui.AbstractFragment
-import com.team.seven.gocomix.ui.home.adapter.ComicsPreviewAdapter
+import com.team.seven.gocomix.ui.UiState
+import com.team.seven.gocomix.ui.comics.home.adapter.ComicsPreviewAdapter
 import com.team.seven.gocomix.util.expand
 import com.team.seven.gocomix.util.hide
 import com.team.seven.gocomix.util.setOnSlide
@@ -33,8 +31,8 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private val comicsAdapter = ComicsPreviewAdapter().apply {
-        interestListener = {
-            openBottomSheet(it)
+        infoListener = {
+            openInfoBottomSheet(it)
         }
         readListener = {
             openComic(it)
@@ -42,14 +40,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     override fun onBindingCreated() {
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(binding.comicsRecyclerView)
-
+        attachPagerSnapHelper()
         binding.apply {
-            comicsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = comicsAdapter
-            }
+            comicsRecyclerView.adapter = comicsAdapter
             comicsBottomSheetBackground.apply {
                 setOnClickListener {
                     bottomSheetBehavior.hide()
@@ -60,18 +53,12 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
                 viewModel.saveToFavourites(it)
             }
         }
-        handleBottomSheetState()
-    }
-
-    private fun handleBottomSheetState() {
         bottomSheetBehavior.apply {
             setOnStateChange { _, state ->
-                binding.comicsBottomSheetBackground.apply {
-                    isClickable = state != BottomSheetBehavior.STATE_HIDDEN
-                }
+                handleBottomSheetState(state)
             }
             setOnSlide { _, slideOffset ->
-                binding.comicsBottomSheetBackground.alpha = slideOffset
+                handleBottomSheetSlide(slideOffset)
             }
             hide()
         }
@@ -83,30 +70,36 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.updateComics()
-        if (viewModel.listState != null) {
-            binding.comicsRecyclerView.layoutManager?.onRestoreInstanceState(viewModel.listState)
-            viewModel.listState = null
+    private fun attachPagerSnapHelper() {
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(binding.comicsRecyclerView)
+    }
+
+    private fun handleBottomSheetState(state: Int) {
+        binding.comicsBottomSheetBackground.apply {
+            isClickable = state != BottomSheetBehavior.STATE_HIDDEN
         }
     }
 
-    private fun handleComicsState(comicsState: ComicsUiState) {
+    private fun handleBottomSheetSlide(slideOffset: Float) {
+        binding.comicsBottomSheetBackground.alpha = slideOffset
+    }
+
+    private fun handleComicsState(comicsState: UiState<List<Comic>>) {
         when (comicsState) {
-            is ComicsUiState.Loading -> {
+            is UiState.Loading -> {
                 binding.comicsProgressIndicator.isIndeterminate = true
             }
-            is ComicsUiState.Success -> {
+            is UiState.Success -> {
                 binding.comicsProgressIndicator.isIndeterminate = false
-                comicsAdapter.submitList(comicsState.comics)
+                comicsAdapter.submitList(comicsState.value)
             }
-            is ComicsUiState.Error -> {
+            is UiState.Failure -> {
             }
         }
     }
 
-    private fun openBottomSheet(comic: Comix) {
+    private fun openInfoBottomSheet(comic: Comic) {
         binding.apply {
             comicInfoBottomSheet.comic = comic
             executePendingBindings()
@@ -114,13 +107,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         bottomSheetBehavior.expand()
     }
 
-    private fun openComic(comic: Comix) {
-        val action = HomeFragmentDirections.actionHomeToPages(comic.id)
+    private fun openComic(comic: Comic) {
+        val action = HomeFragmentDirections
+            .actionHomeToPages(comic.id)
         navController.navigate(action)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        viewModel.listState = binding.comicsRecyclerView.layoutManager?.onSaveInstanceState()
     }
 }

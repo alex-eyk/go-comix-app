@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="edge_margin">16dp</dimen>
+    <dimen name="card_edge_margin">8dp</dimen>
     <dimen name="edge_margin_tablets">24dp</dimen>
 
     <dimen name="input_margin_tablets_begin">0.2</dimen>
@@ -54,4 +55,5 @@
     <dimen name="icon_size">48dp</dimen>
     <dimen name="icon_size_tablets">72dp</dimen>
     <dimen name="bottom_sheet_radius">16dp</dimen>
+    <dimen name="fav_comic_height">240dp</dimen>
 </resources>
