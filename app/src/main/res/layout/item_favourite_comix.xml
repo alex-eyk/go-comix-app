@@ -5,16 +5,26 @@
 
     <data>
 
+        <import type="com.team.seven.gocomix.data.entity.Comic" />
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
         <variable
                 name="comic"
                 type="com.team.seven.gocomix.data.entity.Comic" />
+
+        <variable
+                name="moreClickListener"
+                type="Function1&lt;Comic, Unit>" />
     </data>
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="@dimen/card_corner_small_radius"
-            android:layout_margin="@dimen/edge_margin">
+            android:layout_height="@dimen/fav_comic_height"
+            android:layout_margin="@dimen/edge_margin"
+            app:cardCornerRadius="@dimen/card_corner_small_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -25,14 +35,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="@dimen/edge_margin" />
+                    app:layout_constraintGuide_begin="@dimen/card_edge_margin" />
 
             <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/end_guideline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_end="@dimen/edge_margin" />
+                    app:layout_constraintGuide_end="@dimen/card_edge_margin" />
 
             <ImageView
                     android:id="@+id/fav_comix_cover_image"
@@ -68,6 +78,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/components_small_margin"
                     android:elevation="@dimen/small_bottom_bar_elevation"
+                    android:maxEms="4"
+                    android:text="@{comic.author.login}"
                     app:layout_constraintStart_toEndOf="@+id/fav_comix_author_image"
                     app:layout_constraintTop_toTopOf="@+id/fav_comix_author_image"
                     app:layout_constraintBottom_toBottomOf="@+id/fav_comix_author_image"
@@ -80,6 +92,9 @@
                     android:elevation="@dimen/small_bottom_bar_elevation"
                     android:src="@drawable/ic_more"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{() -> moreClickListener.invoke(comic)}"
                     android:contentDescription="@string/show_more_actions"
                     app:layout_constraintBottom_toBottomOf="@+id/fav_comix_cover_image"
                     app:layout_constraintTop_toTopOf="@+id/fav_comix_small_bottom_bar_bg"

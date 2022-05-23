@@ -5,23 +5,23 @@
 
     <data>
 
-        <import type="com.team.seven.gocomix.model.Comix" />
+        <import type="com.team.seven.gocomix.data.entity.Comic" />
 
         <import type="kotlin.jvm.functions.Function1" />
 
         <import type="kotlin.Unit" />
 
         <variable
-                name="comix"
-                type="Comix" />
+                name="comic"
+                type="Comic" />
 
         <variable
                 name="infoListener"
-                type="Function1&lt;Comix, Unit>" />
+                type="Function1&lt;Comic, Unit>" />
 
         <variable
                 name="readListener"
-                type="Function1&lt;Comix, Unit>" />
+                type="Function1&lt;Comic, Unit>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,13 +49,14 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="@dimen/edge_margin" />
 
+        <!-- app:blurImage="@{comic.cover.loading}" -->
         <ImageView
                 android:id="@+id/comix_preview_cover_bg_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:blurImage="@{comix.cover.loading}"
                 tools:ignore="ContentDescription" />
 
+        <!-- app:image="@{comic.cover.origin}" -->
         <ImageView
                 android:id="@+id/comix_preview_cover_image"
                 android:layout_width="match_parent"
@@ -63,8 +64,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:contentDescription="@string/comix_cover"
-                app:onLongClick="@{() -> readListener.invoke(comix)}"
-                app:image="@{comix.cover.origin}" />
+                app:onLongClick="@{() -> readListener.invoke(comic)}" />
 
         <View
                 android:id="@+id/comix_preview_info_background"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/components_small_margin"
                 android:paddingTop="@dimen/edge_margin"
-                android:text="@{comix.title}"
+                android:text="@{comic.title}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintBottom_toTopOf="@id/description_text"
                 app:layout_constraintEnd_toEndOf="@id/end_guideline"
@@ -92,7 +92,7 @@
                 style="@style/ThemeOverlay.Material3.FloatingActionButton.Primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> infoListener.invoke(comix)}"
+                android:onClick="@{() -> infoListener.invoke(comic)}"
                 app:srcCompat="@drawable/ic_menu"
                 app:layout_constraintEnd_toStartOf="@id/end_guideline"
                 app:layout_constraintBottom_toTopOf="@id/top_guideline"
@@ -104,7 +104,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/edge_margin"
-                android:text="@{comix.description}"
+                android:text="@{comic.description}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintBottom_toTopOf="@id/top_guideline"
                 app:layout_constraintEnd_toStartOf="@id/comix_preview_floating_action_button"
