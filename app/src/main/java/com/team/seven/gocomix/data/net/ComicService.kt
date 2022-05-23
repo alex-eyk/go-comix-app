@@ -9,7 +9,7 @@ import retrofit2.http.Path
 interface ComicService {
 
     @GET("comix/all")
-    suspend fun getRecomendedComics(): Response<List<Comic>>
+    suspend fun getRecommendedComics(): Response<List<Comic>>
 
     @GET("comix/pages/{id}")
     suspend fun getPages(
