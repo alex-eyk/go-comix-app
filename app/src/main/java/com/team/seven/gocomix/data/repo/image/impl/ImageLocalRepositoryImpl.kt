@@ -1,3 +1,5 @@
+@file:SuppressWarnings("ReturnCount")
+
 package com.team.seven.gocomix.data.repo.image.impl
 
 import android.graphics.Bitmap
@@ -49,7 +51,7 @@ class ImageLocalRepositoryImpl : ImageLocalRepository {
                 } else {
                     ImageResult.Failure(ImageNotDecodedException())
                 }
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 ImageResult.Failure(e)
             }
         }

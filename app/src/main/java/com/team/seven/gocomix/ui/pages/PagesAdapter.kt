@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team.seven.gocomix.R
+import com.team.seven.gocomix.data.entity.Page
 import com.team.seven.gocomix.databinding.ItemPageBinding
-import com.team.seven.gocomix.model.Page
 import com.team.seven.gocomix.ui.pages.PagesAdapter.PageViewHolder
 
 class PagesAdapter : ListAdapter<Page, PageViewHolder>(

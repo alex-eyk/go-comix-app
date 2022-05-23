@@ -2,8 +2,9 @@ package com.team.seven.gocomix.ui.pages
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.team.seven.gocomix.model.Page
-import com.team.seven.gocomix.repo.ComixRepository
+import com.team.seven.gocomix.data.entity.Page
+import com.team.seven.gocomix.data.repo.comic.ComicsRepository
+import com.team.seven.gocomix.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,33 +13,17 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class PagesViewModel @Inject constructor(
-    private val comixRepository: ComixRepository
+    private val comicsRepository: ComicsRepository
 ) : ViewModel() {
 
-    private val _pagesState: MutableStateFlow<PagesState> = MutableStateFlow(PagesState.Loading)
+    private val _pagesState: MutableStateFlow<UiState<List<Page>>> =
+        MutableStateFlow(UiState.Loading)
 
-    val pagesState: StateFlow<PagesState> = _pagesState
+    val pagesState: StateFlow<UiState<List<Page>>> = _pagesState
 
     fun updatePages(comicId: Int) {
         viewModelScope.launch {
-            _pagesState.value = PagesState.by(comixRepository.getPages(comicId))
-        }
-    }
-}
-
-sealed class PagesState {
-
-    data class Success(val pages: List<Page>) : PagesState()
-    data class Error(val error: Throwable) : PagesState()
-    object Loading : PagesState()
-
-    companion object {
-        fun by(result: Result<List<Page>>): PagesState {
-            return result.map {
-                Success(it)
-            }.getOrElse {
-                Error(it)
-            }
+            _pagesState.value = UiState.by(comicsRepository.getPages(comicId))
         }
     }
 }
