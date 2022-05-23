@@ -7,8 +7,8 @@ import com.team.seven.gocomix.data.repo.comic.ComicsRepository
 import com.team.seven.gocomix.data.repo.exception.EmptyResponseBodyException
 import com.team.seven.gocomix.data.repo.exception.ServerException
 import com.team.seven.gocomix.util.Either
-import retrofit2.Response
 import javax.inject.Inject
+import retrofit2.Response
 
 class ComicsRemoteRepository @Inject constructor(
     private val comicService: ComicService

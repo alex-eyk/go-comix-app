@@ -4,7 +4,7 @@ import com.team.seven.gocomix.util.Either
 
 sealed class UiState<out T : Any> {
 
-    object None: UiState<Nothing>()
+    object None : UiState<Nothing>()
     object Loading : UiState<Nothing>()
     data class Success<out T : Any>(val value: T) : UiState<T>()
     data class Failure(val e: Exception) : UiState<Nothing>()

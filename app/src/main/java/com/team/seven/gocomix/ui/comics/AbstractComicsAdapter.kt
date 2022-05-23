@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.team.seven.gocomix.data.entity.Comic
 import com.team.seven.gocomix.ui.comics.AbstractComicsAdapter.AbstractComicViewHolder
 
-abstract class AbstractComicsAdapter<B : ViewDataBinding, VH: AbstractComicViewHolder<B>>(
+abstract class AbstractComicsAdapter<B : ViewDataBinding, VH : AbstractComicViewHolder<B>>(
     @LayoutRes private val layoutRes: Int
 ) : ListAdapter<Comic, VH>(ComicDiffCallback()) {
 
