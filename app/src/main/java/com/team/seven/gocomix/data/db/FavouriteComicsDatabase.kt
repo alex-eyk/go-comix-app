@@ -3,7 +3,8 @@
 package com.team.seven.gocomix.data.db
 
 import androidx.room.Database
-import com.team.seven.gocomix.data.dao.FavoritesComicDao
+import androidx.room.RoomDatabase
+import com.team.seven.gocomix.data.dao.FavouriteComicsDao
 import com.team.seven.gocomix.data.dao.PagesDao
 import com.team.seven.gocomix.data.entity.Comic
 import com.team.seven.gocomix.data.entity.Page
@@ -15,9 +16,9 @@ import com.team.seven.gocomix.data.entity.Page
     ],
     version = 1
 )
-abstract class FavoritesComicDatabase {
+abstract class FavouriteComicsDatabase : RoomDatabase() {
 
-    abstract fun favoritesComicDao(): FavoritesComicDao
+    abstract fun favoritesComicDao(): FavouriteComicsDao
 
     abstract fun pagesDao(): PagesDao
 }
