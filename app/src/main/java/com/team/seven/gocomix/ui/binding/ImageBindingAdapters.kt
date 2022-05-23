@@ -8,14 +8,10 @@ import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.Transformation
-import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.data.entity.Quality
 import com.team.seven.gocomix.di.NetworkModule
@@ -37,10 +33,20 @@ object ImageBindingAdapters {
         requireAll = true
     )
     fun setImage(imageView: ImageView, id: Int, quality: Quality) {
-        val imageUrl = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
+        val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
                 "?quality=${quality.ordinal}"
-        baseGlideImageRequest(imageView, imageUrl)
+        baseGlideImageRequest(imageView, url)
             .placeholder(circularProgressDrawable(imageView.context))
+            .into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("blurredImage")
+    fun setBlurredImage(imageView: ImageView, id: Int) {
+        val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
+                "?quality=${Quality.PREVIEW.ordinal}"
+        baseGlideImageRequest(imageView, url)
+            .transform(centerBlurTransform())
             .into(imageView)
     }
 

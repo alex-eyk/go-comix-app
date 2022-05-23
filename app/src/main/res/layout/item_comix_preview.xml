@@ -51,14 +51,13 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="@dimen/edge_margin" />
 
-        <!-- app:blurImage="@{comic.cover.loading}" -->
         <ImageView
                 android:id="@+id/comix_preview_cover_bg_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:blurredImage="@{comic.coverId}"
                 tools:ignore="ContentDescription" />
 
-        <!-- app:image="@{comic.cover.origin}" -->
         <ImageView
                 android:id="@+id/comix_preview_cover_image"
                 android:layout_width="match_parent"
