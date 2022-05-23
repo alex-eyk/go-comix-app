@@ -1,38 +1,38 @@
 package com.team.seven.gocomix.domaim.interactor
 
 import android.graphics.Bitmap
-import com.team.seven.gocomix.domaim.Result
 import com.team.seven.gocomix.domaim.service.RecognizeService
 import com.team.seven.gocomix.domaim.service.TranslateService
+import com.team.seven.gocomix.util.Either
 
-class TranslateRecognizedUseCaseImpl(
+class TranslateRecognizeUseCaseImpl(
     private val recognizer: RecognizeService,
     private val translator: TranslateService
-) : TranslateRecognizedUseCase {
+) : TranslateRecognizeUseCase {
 
-    override suspend fun execute(image: Bitmap): Result<List<String>> {
+    override suspend fun execute(image: Bitmap): Either<List<String>> {
         return when (val state = recognizer.recognize(image)) {
-            is Result.Success -> {
-                translateBlocks(state.result)
+            is Either.Success -> {
+                translateBlocks(state.value)
             }
-            is Result.Failure -> {
+            is Either.Failure -> {
                 state
             }
         }
     }
 
-    private suspend fun translateBlocks(blocks: List<String>): Result<List<String>> {
+    private suspend fun translateBlocks(blocks: List<String>): Either<List<String>> {
         val translatedBlocks = arrayListOf<String>()
         blocks.forEach {
             when (val translateState = translator.translateIntoRussian(it)) {
-                is Result.Success -> {
-                    translatedBlocks.add(translateState.result)
+                is Either.Success -> {
+                    translatedBlocks.add(translateState.value)
                 }
-                is Result.Failure -> {
+                is Either.Failure -> {
                     return translateState
                 }
             }
         }
-        return Result.Success(translatedBlocks)
+        return Either.Success(translatedBlocks)
     }
 }
