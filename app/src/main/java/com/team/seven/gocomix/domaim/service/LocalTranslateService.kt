@@ -3,43 +3,57 @@ package com.team.seven.gocomix.domaim.service
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
-import com.team.seven.gocomix.domaim.Result
+import com.team.seven.gocomix.util.Either
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 class LocalTranslateService : TranslateService {
-    private val options = TranslatorOptions.Builder()
-        .setSourceLanguage(TranslateLanguage.ENGLISH)
-        .setTargetLanguage(TranslateLanguage.RUSSIAN)
-        .build()
 
-    private val englishRussianTranslator = Translation.getClient(options)
+    private val englishRussianTranslator: Translator
 
-    private val conditions = DownloadConditions.Builder()
-        .requireWifi()
-        .build()
-    private val translator = Translation.getClient(options)
+    init {
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.RUSSIAN)
+            .build()
+        this.englishRussianTranslator = Translation.getClient(options)
+    }
 
     override suspend fun translateIntoRussian(
-        textBlock: String
-    ): Result<String> = suspendCoroutine {
-        var downloaded = false
-        englishRussianTranslator.downloadModelIfNeeded(conditions)
-            .addOnSuccessListener {
-                downloaded = true
+        text: String
+    ): Either<String> {
+        return when (val result = downloadModel()) {
+            is Either.Success -> {
+                translate(text)
+            }
+            is Either.Failure -> {
+                result
+            }
+        }
+    }
+
+    private suspend fun downloadModel(): Either<Boolean> = suspendCoroutine {
+        val downloadConditions = DownloadConditions.Builder()
+            .requireWifi()
+            .build()
+        englishRussianTranslator.downloadModelIfNeeded(downloadConditions)
+            .addOnSuccessListener { _ ->
+                it.resume(Either.Success(true))
             }
             .addOnFailureListener { exception ->
-                it.resume(Result.Failure(exception))
+                it.resume(Either.Failure(exception))
             }
-        if (downloaded) {
-            englishRussianTranslator.translate(textBlock)
-                .addOnSuccessListener { translatedText ->
-                    it.resume(Result.Success(translatedText))
-                }
-                .addOnFailureListener { exception ->
-                    it.resume(Result.Failure(exception))
-                }
-        }
+    }
+
+    private suspend fun translate(text: String): Either<String> = suspendCoroutine {
+        englishRussianTranslator.translate(text)
+            .addOnSuccessListener { translatedText ->
+                it.resume(Either.Success(translatedText))
+            }
+            .addOnFailureListener { exception ->
+                it.resume(Either.Failure(exception))
+            }
     }
 }
