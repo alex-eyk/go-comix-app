@@ -7,6 +7,8 @@
 
         <import type="com.team.seven.gocomix.data.entity.Comic" />
 
+        <import type="com.team.seven.gocomix.data.entity.Quality" />
+
         <import type="kotlin.jvm.functions.Function1" />
 
         <import type="kotlin.Unit" />
@@ -64,6 +66,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:contentDescription="@string/comix_cover"
+                app:image="@{comic.coverId}"
+                app:quality="@{Quality.HIGH}"
                 app:onLongClick="@{() -> readListener.invoke(comic)}" />
 
         <View
