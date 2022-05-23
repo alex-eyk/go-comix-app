@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.team.seven.gocomix.model.Comix" />
+        <import type="com.team.seven.gocomix.data.entity.Comic" />
 
         <import type="kotlin.jvm.functions.Function1" />
 
@@ -13,11 +13,11 @@
 
         <variable
                 name="comic"
-                type="Comix" />
+                type="Comic" />
 
         <variable
                 name="saveListener"
-                type="Function1&lt;Comix, Unit>" />
+                type="Function1&lt;Comic, Unit>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,6 +51,10 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="@dimen/edge_margin" />
 
+        <!--
+            app:image="@{comic.author.photo.origin}"
+            app:preview="@{comic.author.photo.loading}"
+        -->
         <ImageView
                 android:id="@+id/comix_info_profile_image"
                 android:layout_width="@dimen/profile_photo_medium_size"
@@ -59,8 +63,6 @@
                 android:contentDescription="@string/profile_image"
                 android:src="?attr/colorOnSecondary"
                 app:clipToOutline="@{true}"
-                app:image="@{comic.author.photo.origin}"
-                app:preview="@{comic.author.photo.loading}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintTop_toTopOf="@id/top_guideline"
                 app:layout_constraintBottom_toBottomOf="@id/comix_info_subscribers_text"
