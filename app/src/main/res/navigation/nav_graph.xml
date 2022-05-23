@@ -13,13 +13,13 @@
 
     <fragment
             android:id="@+id/navigation_home"
-            android:name="com.team.seven.gocomix.ui.home.HomeFragment"
+            android:name="com.team.seven.gocomix.ui.comics.home.HomeFragment"
             android:label="Home"
             tools:layout="@layout/fragment_home" />
 
     <fragment
             android:id="@+id/navigation_favourite"
-            android:name="com.team.seven.gocomix.ui.favourite.FavouriteFragment"
+            android:name="com.team.seven.gocomix.ui.comics.favourite.FavouriteFragment"
             android:label="Favourite" />
 
 
