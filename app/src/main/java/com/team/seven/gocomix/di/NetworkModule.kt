@@ -2,9 +2,6 @@ package com.team.seven.gocomix.di
 
 import com.team.seven.gocomix.data.net.ComicService
 import com.team.seven.gocomix.data.net.ImageService
-import com.team.seven.gocomix.repo.ComixRepository
-import com.team.seven.gocomix.repo.net.ComixNetRepository
-import com.team.seven.gocomix.repo.net.ComixService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,18 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
 
     private const val COMICS_SERVER_URL = "http://37.140.199.63:8080"
-
-    @Singleton
-    @Provides
-    fun provideComicRepository(comixService: ComixService): ComixRepository {
-        return ComixNetRepository(comixService)
-    }
-
-    @Singleton
-    @Provides
-    fun provideComixService(retrofit: Retrofit): ComixService {
-        return retrofit.create(ComixService::class.java)
-    }
 
     @Singleton
     @Provides

@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.team.seven.gocomix.R
+import com.team.seven.gocomix.data.entity.Page
 import com.team.seven.gocomix.databinding.FragmentComixPagesBinding
 import com.team.seven.gocomix.ui.AbstractFragment
+import com.team.seven.gocomix.ui.UiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,14 +56,14 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
         )
     }
 
-    private fun handlePagesState(pagesState: PagesState) {
+    private fun handlePagesState(pagesState: UiState<List<Page>>) {
         when (pagesState) {
-            is PagesState.Loading -> {
+            is UiState.Loading -> {
             }
-            is PagesState.Success -> {
-                pagesAdapter.submitList(pagesState.pages)
+            is UiState.Success -> {
+                pagesAdapter.submitList(pagesState.value)
             }
-            is PagesState.Error -> {
+            is UiState.Failure -> {
             }
         }
     }
