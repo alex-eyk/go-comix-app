@@ -8,7 +8,7 @@ import androidx.room.Query
 import com.team.seven.gocomix.data.entity.Comic
 
 @Dao
-interface FavoritesComicDao {
+interface FavouriteComicsDao {
 
     @Query("SELECT * FROM `comic`")
     suspend fun getAll(): List<Comic>
