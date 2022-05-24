@@ -5,10 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.team.seven.gocomix.ui.auth.signup.exception.DifPasswordConfirmException
-import com.team.seven.gocomix.ui.auth.signup.exception.EmptyEmailException
-import com.team.seven.gocomix.ui.auth.signup.exception.EmptyPasswordConfirmException
-import com.team.seven.gocomix.ui.auth.signup.exception.EmptyPasswordException
+import com.team.seven.gocomix.ui.auth.exception.DifPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers

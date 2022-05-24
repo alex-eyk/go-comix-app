@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.19202898550724637" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.19202898550724637" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1" />
       </map>
     </option>

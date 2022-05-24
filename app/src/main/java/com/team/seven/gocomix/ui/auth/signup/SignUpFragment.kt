@@ -1,15 +1,18 @@
 package com.team.seven.gocomix.ui.auth.signup
 
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWebException
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignUpBinding
 import com.team.seven.gocomix.ui.auth.AbstractAuthFragment
-import com.team.seven.gocomix.ui.auth.signup.exception.EmptyEmailException
-import com.team.seven.gocomix.ui.auth.signup.exception.EmptyPasswordException
-import com.team.seven.gocomix.ui.auth.signup.exception.EmptyPasswordConfirmException
-import com.team.seven.gocomix.ui.auth.signup.exception.DifPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.DifPasswordConfirmException
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +33,10 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
             registerEmailEditText.addTextChangedListener{
                 registerEmailInputLayout.error = null
             }
+            registerPasswordEditText.addTextChangedListener {
+                registerPasswordInputLayout.error = null
+            }
+           // registerPasswordAgainEditText - лажа
         }
     }
 
@@ -74,10 +81,20 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
                     R.string.different_password
                 )
             }
+            is FirebaseAuthWebException -> {
+                Snackbar.make(requireView(), "Ошибка, попробуйте зарегестрироваться немного позже",
+                    Snackbar.LENGTH_SHORT).show()
+            }
+            is FirebaseAuthUserCollisionException -> {
+                Snackbar.make(requireView(), "Пользователь с таким логином уже существует",
+                    Snackbar.LENGTH_SHORT).show()
+            }
+            is FirebaseAuthRecentLoginRequiredException -> {
+                Snackbar.make(requireView(), "Ошибка, попробуйте зарегистрироваться ещё раз",
+                    Snackbar.LENGTH_SHORT).show()
+            }
             else -> {
-                Snackbar.make(requireView(), resources.getString(
-                    R.string.unknown_error
-                ), Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(),"Ошибка", Snackbar.LENGTH_SHORT).show()
             }
         }
     }

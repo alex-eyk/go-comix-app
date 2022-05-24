@@ -38,4 +38,5 @@
     <string name="login_using_google">Войти с Google</string>
 
     <string name="input_field_is_empty_error">Поле не может быть пустым</string>
+    <string name="different_password">Пароли не совпадают</string>
 </resources>
