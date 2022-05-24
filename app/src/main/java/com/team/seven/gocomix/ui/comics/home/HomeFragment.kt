@@ -3,6 +3,7 @@ package com.team.seven.gocomix.ui.comics.home
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.data.entity.Comic
 import com.team.seven.gocomix.databinding.FragmentHomeBinding
@@ -51,6 +52,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
             }
             comicInfoBottomSheet.saveListener = {
                 viewModel.saveToFavourites(it)
+                val saved = getString(R.string.comic_saved)
+                Snackbar.make(requireView(), saved, Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
         bottomSheetBehavior.apply {

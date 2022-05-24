@@ -9,12 +9,12 @@ import android.os.Environment.MEDIA_MOUNTED
 import android.os.Environment.MEDIA_MOUNTED_READ_ONLY
 import android.util.Log
 import com.team.seven.gocomix.data.repo.image.ImageLocalRepository
-import com.team.seven.gocomix.data.repo.image.ImageResult
-import com.team.seven.gocomix.data.repo.image.SaveResult
 import com.team.seven.gocomix.data.repo.image.exception.ImageAlreadyExistsException
 import com.team.seven.gocomix.data.repo.image.exception.ImageNotDecodedException
 import com.team.seven.gocomix.data.repo.image.exception.StorageNotReadableException
 import com.team.seven.gocomix.data.repo.image.exception.StorageNotWritableException
+import com.team.seven.gocomix.util.Either
+import com.team.seven.gocomix.util.EmptyEither
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -33,39 +33,39 @@ class ImageLocalRepositoryImpl : ImageLocalRepository {
         private const val QUALITY_MAX = 100
     }
 
-    override suspend fun getImage(id: String): ImageResult {
+    override suspend fun getImage(id: String): Either<Bitmap> {
         if (isStorageReadable() == false) {
             Log.e(TAG, "Storage is not readable")
-            return ImageResult.Failure(StorageNotReadableException())
+            return Either.Failure(StorageNotReadableException())
         }
         val imageFile = File(getComicImagesDirectory(), "$id.$IMAGE_EXT")
         if (imageFile.exists() == false) {
             Log.e(TAG, "Image $id.png not found")
-            return ImageResult.Failure(FileNotFoundException())
+            return Either.Failure(FileNotFoundException())
         }
         return withContext(Dispatchers.IO) {
             return@withContext try {
                 val image = BitmapFactory.decodeFile(imageFile.absolutePath)
                 if (image != null) {
-                    ImageResult.Success(image)
+                    Either.Success(image)
                 } else {
-                    ImageResult.Failure(ImageNotDecodedException())
+                    Either.Failure(ImageNotDecodedException())
                 }
             } catch (e: IOException) {
-                ImageResult.Failure(e)
+                Either.Failure(e)
             }
         }
     }
 
     @Suppress("BlockingMethodInNonBlockingContext")
-    override suspend fun saveImage(id: String, image: Bitmap): SaveResult {
+    override suspend fun saveImage(id: String, image: Bitmap): EmptyEither {
         if (isStorageWritable() == false) {
             Log.e(TAG, "Storage is not writable")
-            return SaveResult.Failure(StorageNotWritableException())
+            return EmptyEither.Failure(StorageNotWritableException())
         }
         val imageFile = File(getComicImagesDirectory(), "$id.$IMAGE_EXT")
         if (imageFile.exists()) {
-            return SaveResult.Failure(ImageAlreadyExistsException())
+            return EmptyEither.Failure(ImageAlreadyExistsException())
         }
         return withContext(Dispatchers.IO) {
             try {
@@ -73,9 +73,9 @@ class ImageLocalRepositoryImpl : ImageLocalRepository {
                 image.compress(Bitmap.CompressFormat.PNG, QUALITY_MAX, outputStream)
                 outputStream.flush()
                 outputStream.close()
-                return@withContext SaveResult.Success
+                return@withContext EmptyEither.Success
             } catch (e: IOException) {
-                return@withContext SaveResult.Failure(e)
+                return@withContext EmptyEither.Failure(e)
             }
         }
     }

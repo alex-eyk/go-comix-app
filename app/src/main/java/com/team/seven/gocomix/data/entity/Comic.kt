@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Comic(
@@ -22,6 +23,7 @@ data class Comic(
     val rating: Float,
 
     @ColumnInfo(name = "cover_id")
+    @SerializedName("cover")
     val coverId: Int = 1,
 
     @Embedded

@@ -1,5 +1,6 @@
 package com.team.seven.gocomix.ui.pages
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,8 @@ import com.team.seven.gocomix.ui.pages.PagesAdapter.PageViewHolder
 class PagesAdapter : ListAdapter<Page, PageViewHolder>(
     PagesDiffCallback()
 ) {
+
+    var loadedListener: ((image: Bitmap) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,12 +33,13 @@ class PagesAdapter : ListAdapter<Page, PageViewHolder>(
         holder.bindTo(getItem(position))
     }
 
-    class PageViewHolder internal constructor(
+    inner class PageViewHolder internal constructor(
         private val binding: ItemPageBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindTo(page: Page) {
             binding.page = page
+            binding.loadedListener = loadedListener
             binding.executePendingBindings()
         }
     }

@@ -2,10 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="text"
+                type="String" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/comix_translated_text_layout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:paddingBottom="@dimen/edge_margin"
             android:background="@drawable/bg_bottom_sheet"
             app:behavior_hideable="true"
@@ -37,12 +44,12 @@
                 android:id="@+id/comix_translated_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/components_medium_margin"
                 android:maxLines="100"
-                android:text="@string/long_string"
+                android:text="@{text}"
                 app:layout_constraintTop_toTopOf="@id/top_guideline"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
-                app:layout_constraintEnd_toStartOf="@id/end_guideline" />
+                app:layout_constraintEnd_toStartOf="@id/end_guideline"
+                tools:text="Переведенный текст" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

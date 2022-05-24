@@ -10,10 +10,23 @@ class TranslateRecognizeUseCaseImpl(
     private val translator: TranslateService
 ) : TranslateRecognizeUseCase {
 
-    override suspend fun execute(image: Bitmap): Either<List<String>> {
+    override suspend fun execute(image: Bitmap): Either<String> {
         return when (val state = recognizer.recognize(image)) {
             is Either.Success -> {
-                translateBlocks(state.value)
+                return when (val translatedState = translateBlocks(state.value)) {
+                    is Either.Success -> {
+                        val textBuilder = StringBuilder()
+                        translatedState.value.forEach {
+                            textBuilder
+                                .append(it)
+                                .appendLine()
+                        }
+                        Either.Success(textBuilder.toString())
+                    }
+                    is Either.Failure -> {
+                        translatedState
+                    }
+                }
             }
             is Either.Failure -> {
                 state

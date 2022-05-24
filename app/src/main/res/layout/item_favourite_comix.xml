@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.team.seven.gocomix.data.entity.Quality" />
+
         <import type="com.team.seven.gocomix.data.entity.Comic" />
 
         <import type="kotlin.jvm.functions.Function1" />
@@ -48,7 +50,10 @@
                     android:id="@+id/fav_comix_cover_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
                     android:src="@color/purple_800"
+                    app:image="@{comic.coverId}"
+                    app:quality="@{Quality.LOW}"
                     tools:ignore="ContentDescription" />
 
             <View
@@ -79,11 +84,11 @@
                     android:layout_marginStart="@dimen/components_small_margin"
                     android:elevation="@dimen/small_bottom_bar_elevation"
                     android:maxEms="4"
-                    android:text="@{comic.author.login}"
+                    android:text="@{comic.title}"
                     app:layout_constraintStart_toEndOf="@+id/fav_comix_author_image"
                     app:layout_constraintTop_toTopOf="@+id/fav_comix_author_image"
                     app:layout_constraintBottom_toBottomOf="@+id/fav_comix_author_image"
-                    tools:text="Автор комикса" />
+                    tools:text="Заголовок" />
 
             <ImageButton
                     android:id="@+id/fav_comix_more_button"

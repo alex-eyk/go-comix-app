@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/end_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/edge_margin" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/comix_page_progress_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/comix_page_images_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                    android:id="@+id/comic_bg_translate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="@dimen/edge_margin"
+                    android:layout_marginEnd="@dimen/edge_margin"
+                    android:elevation="@dimen/cardview_default_elevation"
+                    android:src="@drawable/bg_circle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/translate_text_from_page" />
+
+            <ImageButton
+                    android:id="@+id/comic_show_translate_button"
+                    android:layout_width="@dimen/image_button_small_size"
+                    android:layout_height="@dimen/image_button_small_size"
+                    android:elevation="@dimen/cardview_default_elevation"
+                    android:src="@drawable/ic_translate"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/save_changes"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:alphaOnLongPress="@{comicBgTranslate}"
+                    app:layout_constraintBottom_toBottomOf="@+id/comic_bg_translate"
+                    app:layout_constraintEnd_toEndOf="@+id/comic_bg_translate"
+                    app:layout_constraintStart_toStartOf="@+id/comic_bg_translate"
+                    app:layout_constraintTop_toTopOf="@+id/comic_bg_translate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+                android:id="@+id/comic_translate_bottom_sheet"
+                layout="@layout/item_comix_translate" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

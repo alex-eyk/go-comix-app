@@ -5,5 +5,5 @@ import com.team.seven.gocomix.util.Either
 
 interface TranslateRecognizeUseCase {
 
-    suspend fun execute(image: Bitmap): Either<List<String>>
+    suspend fun execute(image: Bitmap): Either<String>
 }

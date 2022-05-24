@@ -13,9 +13,11 @@ import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.team.seven.gocomix.R
+import com.team.seven.gocomix.data.entity.Quality
+import com.team.seven.gocomix.di.NetworkModule
 import com.team.seven.gocomix.util.dimenInDp
+import com.team.seven.gocomix.util.onSuccess
 import com.team.seven.gocomix.util.themeColor
-import java.lang.IllegalStateException
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 object ImageBindingAdapters {
@@ -27,42 +29,30 @@ object ImageBindingAdapters {
     @BindingAdapter(
         value = [
             "image",
-            "preview"
+            "quality",
+            "loadedListener"
         ],
-        requireAll = true
+        requireAll = false
     )
-    fun setImage(imageView: ImageView, imageUrl: String?, previewImageUrl: String?) {
-        if (imageUrl == null && previewImageUrl == null) {
-            return
-        } else if (imageUrl == null || previewImageUrl == null) {
-            throw IllegalStateException()
-        }
-        baseGlideImageRequest(imageView, imageUrl)
-            .placeholder(R.drawable.bg_image_placeholder)
-            .thumbnail(
-                baseGlideImageRequest(imageView, previewImageUrl)
-                    .transform(centerBlurTransform())
-            )
-            .into(imageView)
-    }
-
-    @JvmStatic
-    @BindingAdapter("image")
     fun setImage(
         imageView: ImageView,
-        imageUrl: String
+        id: Int,
+        quality: Quality,
+        loadedListener: ((image: Bitmap) -> Unit)?
     ) {
-        baseGlideImageRequest(imageView, imageUrl)
+        val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
+            "?quality=${quality.ordinal}"
+        baseGlideImageRequest(imageView, url)
             .placeholder(circularProgressDrawable(imageView.context))
+            .onSuccess { loadedListener?.invoke(it) }
             .into(imageView)
     }
 
     @JvmStatic
-    @BindingAdapter("blurImage")
-    fun setBlurImage(
-        imageView: ImageView,
-        url: String
-    ) {
+    @BindingAdapter("blurredImage")
+    fun setBlurredImage(imageView: ImageView, id: Int) {
+        val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
+            "?quality=${Quality.PREVIEW.ordinal}"
         baseGlideImageRequest(imageView, url)
             .transform(centerBlurTransform())
             .into(imageView)
