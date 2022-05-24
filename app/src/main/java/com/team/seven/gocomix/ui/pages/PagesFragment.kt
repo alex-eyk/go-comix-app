@@ -3,6 +3,7 @@ package com.team.seven.gocomix.ui.pages
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -13,7 +14,9 @@ import com.team.seven.gocomix.data.entity.Page
 import com.team.seven.gocomix.databinding.FragmentComixPagesBinding
 import com.team.seven.gocomix.ui.AbstractFragment
 import com.team.seven.gocomix.ui.UiState
+import com.team.seven.gocomix.util.expand
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel>(
@@ -24,7 +27,7 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
 
     private val navArgs by navArgs<PagesFragmentArgs>()
 
-    private val bottomSheetBehaivour by lazy {
+    private val bottomSheetBehaviour by lazy {
         BottomSheetBehavior.from(
             binding.comicTranslateBottomSheet!!.comixTranslatedTextLayout
         )
@@ -44,13 +47,23 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
                 layoutManager = horizontalLayoutManager()
                 adapter = pagesAdapter
             }
+            comicShowTranslateButton?.setOnClickListener {
+                bottomSheetBehaviour.expand()
+            }
         }
         binding.comixPageImagesRecyclerView
     }
 
     override suspend fun onCollectStates() {
-        viewModel.pagesState.collect {
-            handlePagesState(it)
+        lifecycleScope.launch {
+            viewModel.pagesState.collect {
+                handlePagesState(it)
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.translatedState.collect {
+                handleTranslatedState(it)
+            }
         }
     }
 
@@ -75,6 +88,15 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
                 pagesAdapter.submitList(pagesState.value)
             }
             is UiState.Failure -> {
+            }
+        }
+    }
+
+    private fun handleTranslatedState(state: UiState<String>) {
+        when (state) {
+            is UiState.Success -> {
+                bottomSheetBehaviour.expand()
+                binding.comicTranslateBottomSheet?.text = state.value
             }
         }
     }

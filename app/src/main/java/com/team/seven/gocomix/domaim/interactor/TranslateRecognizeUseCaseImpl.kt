@@ -3,7 +3,6 @@ package com.team.seven.gocomix.domaim.interactor
 import android.graphics.Bitmap
 import com.team.seven.gocomix.domaim.service.RecognizeService
 import com.team.seven.gocomix.domaim.service.TranslateService
-import com.team.seven.gocomix.ui.UiState
 import com.team.seven.gocomix.util.Either
 
 class TranslateRecognizeUseCaseImpl(
@@ -22,7 +21,7 @@ class TranslateRecognizeUseCaseImpl(
                                 .append(it)
                                 .appendLine()
                         }
-                        Either.Success(translatedState.toString())
+                        Either.Success(textBuilder.toString())
                     }
                     is Either.Failure -> {
                         translatedState
