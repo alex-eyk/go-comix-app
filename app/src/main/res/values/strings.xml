@@ -39,4 +39,5 @@
 
     <string name="input_field_is_empty_error">Поле не может быть пустым</string>
     <string name="different_password">Пароли не совпадают</string>
+    <string name="short_password">Пароль должен содержать как минимум 6 символов</string>
 </resources>

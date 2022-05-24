@@ -9,6 +9,7 @@ import com.team.seven.gocomix.ui.auth.exception.DifPasswordConfirmException
 import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
 import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
 import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
+import com.team.seven.gocomix.ui.auth.exception.ShortPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -30,13 +31,16 @@ class SignUpViewModel @Inject constructor(
     val password = MutableStateFlow("")
     val passwordConfirm = MutableStateFlow("")
 
-    fun signInWithEmail() {
+    fun signUpWithEmail() {
         when {
             email.value.isEmpty() -> {
                 _signUpState.value = SignUpState.Failure(EmptyEmailException())
             }
             password.value.isEmpty() -> {
                 _signUpState.value = SignUpState.Failure(EmptyPasswordException())
+            }
+            password.value.length<6 -> {
+                _signUpState.value = SignUpState.Failure(ShortPasswordException())
             }
             passwordConfirm.value.isEmpty() -> {
                 _signUpState.value = SignUpState.Failure(EmptyPasswordConfirmException())

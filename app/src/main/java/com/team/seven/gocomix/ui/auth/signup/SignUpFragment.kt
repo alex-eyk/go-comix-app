@@ -1,5 +1,7 @@
 package com.team.seven.gocomix.ui.auth.signup
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
@@ -13,11 +15,12 @@ import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
 import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
 import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
 import com.team.seven.gocomix.ui.auth.exception.DifPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.ShortPasswordException
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewModel>(
-    layoutRes = R.layout.fragment_sign_in
+    layoutRes = R.layout.fragment_sign_up
 ) {
 
     companion object {
@@ -36,7 +39,9 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
             registerPasswordEditText.addTextChangedListener {
                 registerPasswordInputLayout.error = null
             }
-           // registerPasswordAgainEditText - лажа
+            loginPasswordAgainEditText.addTextChangedListener {
+                registerPasswordAgainInputLayout.error = null
+            }
         }
     }
 
@@ -93,8 +98,14 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
                 Snackbar.make(requireView(), "Ошибка, попробуйте зарегистрироваться ещё раз",
                     Snackbar.LENGTH_SHORT).show()
             }
+            is ShortPasswordException -> {
+                binding.registerPasswordInputLayout.error = resources.getString(
+                    R.string.short_password
+                )
+            }
             else -> {
                 Snackbar.make(requireView(),"Ошибка", Snackbar.LENGTH_SHORT).show()
+                Log.d(e.message, "e.message")
             }
         }
     }

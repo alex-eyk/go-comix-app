@@ -71,6 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:maxLines="1"
+                        android:text="@={viewModel.email}"
                         tools:text="example@google.com" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -88,6 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
+                        android:text="@={viewModel.password}"
                         tools:text="password" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,6 +107,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
+                        android:text="@={viewModel.passwordConfirm}"
                         tools:text="password" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -119,6 +122,7 @@
                 android:layout_marginEnd="@dimen/large_button_margin"
                 android:text="@string/register"
                 app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{() -> viewModel.signUpWithEmail()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_guideline" />
 
