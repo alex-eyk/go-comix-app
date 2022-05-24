@@ -11,11 +11,11 @@ import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
 import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
 import com.team.seven.gocomix.ui.auth.exception.ShortPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
