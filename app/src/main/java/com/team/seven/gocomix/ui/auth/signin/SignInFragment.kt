@@ -1,14 +1,17 @@
 package com.team.seven.gocomix.ui.auth.signin
 
-import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
+import com.google.firebase.auth.FirebaseAuthWebException
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignInBinding
 import com.team.seven.gocomix.ui.auth.AbstractAuthFragment
-import com.team.seven.gocomix.ui.auth.signin.exception.EmptyEmailException
-import com.team.seven.gocomix.ui.auth.signin.exception.EmptyPasswordException
+import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +32,12 @@ class SignInFragment : AbstractAuthFragment<FragmentSignInBinding, SignInViewMod
             loginUsernameEditText.addTextChangedListener {
                 loginUsernameInputLayout.error = null
             }
+            loginPasswordEditText.addTextChangedListener {
+                loginPasswordInputLayout.error = null
+            }
+        }
+        binding.loginRegisterButton.setOnClickListener {
+            navController.navigate(R.id.navigation_sign_up)
         }
     }
 
@@ -59,7 +68,37 @@ class SignInFragment : AbstractAuthFragment<FragmentSignInBinding, SignInViewMod
                 )
             }
             is EmptyPasswordException -> {
-                Log.e(TAG, "Empty password", e)
+                binding.loginPasswordInputLayout.error = resources.getString(
+                    R.string.input_field_is_empty_error
+                )
+            }
+            is FirebaseAuthInvalidCredentialsException -> {
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка входа, перепроверьте введенные данные",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            is FirebaseAuthInvalidUserException -> {
+                Snackbar.make(
+                    requireView(),
+                    "Пользователь с данным логином удален",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            is FirebaseAuthRecentLoginRequiredException -> {
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка, попробуйте ввести даанные ещё раз",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            is FirebaseAuthWebException -> {
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка, попробуйте войти немного позже",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             else -> {
                 Snackbar.make(requireView(), "Ошибка", Snackbar.LENGTH_SHORT).show()

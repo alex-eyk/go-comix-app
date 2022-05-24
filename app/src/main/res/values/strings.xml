@@ -41,4 +41,6 @@
     <string name="translate_text_from_page">Перевести текст с изображения</string>
     <string name="save">Сохранить</string>
     <string name="comic_saved">Комикс сохранен в избранное</string>
+    <string name="different_password">Пароли не совпадают</string>
+    <string name="short_password">Пароль должен содержать как минимум 6 символов</string>
 </resources>
