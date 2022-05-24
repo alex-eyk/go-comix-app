@@ -1,5 +1,6 @@
 package com.team.seven.gocomix.ui.auth.signin
 
+import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
@@ -27,9 +28,6 @@ class SignInFragment : AbstractAuthFragment<FragmentSignInBinding, SignInViewMod
         binding.apply {
             loginUsernameEditText.addTextChangedListener {
                 loginUsernameInputLayout.error = null
-            }
-            loginPasswordEditText.addTextChangedListener {
-                loginPasswordInputLayout.error = null
             }
         }
     }
@@ -61,14 +59,10 @@ class SignInFragment : AbstractAuthFragment<FragmentSignInBinding, SignInViewMod
                 )
             }
             is EmptyPasswordException -> {
-                binding.loginPasswordInputLayout.error = resources.getString(
-                    R.string.input_field_is_empty_error
-                )
+                Log.e(TAG, "Empty password", e)
             }
             else -> {
-                Snackbar.make(requireView(), resources.getString(
-                    R.string.unknown_error
-                ), Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(), "Ошибка", Snackbar.LENGTH_SHORT).show()
             }
         }
     }
