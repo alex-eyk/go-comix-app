@@ -80,6 +80,22 @@
                 android:id="@+id/action_sign_in_to_home"
                 app:destination="@id/navigation_home" />
 
+        <action
+                android:id="@+id/action_sign_in_to_sign_up"
+                app:destination="@id/navigation_sign_up" />
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_sign_up"
+            android:name="com.team.seven.gocomix.ui.auth.signup.SignUpFragment"
+            android:label="SignUp"
+            tools:layout="@layout/fragment_sign_up" >
+
+        <action
+                android:id="@+id/action_sign_up_to_sign_in"
+                app:destination="@id/navigation_sign_in" />
+
     </fragment>
 
     <fragment

@@ -27,14 +27,14 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
 
     override fun onBindingCreated() {
         val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(binding.comixPageImagesRecyclerView)
-        binding.apply {
-            comixPageImagesRecyclerView?.apply {
-                layoutManager = horizontalLayoutManager()
-                adapter = pagesAdapter
-            }
-        }
-        binding.comixPageImagesRecyclerView
+//        snapHelper.attachToRecyclerView(binding.comixPageImagesRecyclerView)
+//        binding.apply {
+//            comixPageImagesRecyclerView?.apply {
+//                layoutManager = horizontalLayoutManager()
+//                adapter = pagesAdapter
+//            }
+//        }
+//        binding.comixPageImagesRecyclerView
     }
 
     override suspend fun onCollectStates() {
