@@ -39,5 +39,4 @@ object RepoModule {
     fun provideImageLocalRepository(): ImageLocalRepository {
         return ImageLocalRepositoryImpl()
     }
-
 }

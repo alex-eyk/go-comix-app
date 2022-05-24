@@ -10,6 +10,9 @@ object AnimationBindingAdapters {
 
     private const val DURATION = 300L
 
+    private const val ALPHA_VISIBLE = 1F
+    private const val ALPHA_TRANSPARENT = 0.2F
+
     @JvmStatic
     @BindingAdapter("alphaOnLongPress")
     fun setAlphaOnLongPress(view: View, with: View) {
@@ -26,15 +29,15 @@ object AnimationBindingAdapters {
     }
 
     private fun appearance(view: View) {
-        animate(view, 0.2F, 1F)
+        animate(view, ALPHA_TRANSPARENT, ALPHA_VISIBLE)
     }
 
     private fun disappearance(view: View) {
-        animate(view, 1F, 0.2F)
+        animate(view, ALPHA_VISIBLE, ALPHA_TRANSPARENT)
     }
 
-    private fun animate(view: View, vararg values: Float) {
-        ObjectAnimator.ofFloat(view, View.ALPHA, *values)
+    private fun animate(view: View, from: Float, to: Float) {
+        ObjectAnimator.ofFloat(view, View.ALPHA, from, to)
             .setDuration(DURATION)
             .setTimeInterpolator(AccelerateDecelerateInterpolator())
             .start()

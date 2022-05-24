@@ -87,8 +87,8 @@
                 android:text="@{comic.title}"
                 app:layout_constraintStart_toStartOf="@id/start_guideline"
                 app:layout_constraintBottom_toTopOf="@id/description_text"
-                app:layout_constraintEnd_toEndOf="@id/end_guideline"
-                tools:text="Заголовок комикса" />
+                tools:text="Заголовок комикса"
+                app:layout_constraintEnd_toStartOf="@+id/comix_preview_floating_action_button" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/comix_preview_floating_action_button"

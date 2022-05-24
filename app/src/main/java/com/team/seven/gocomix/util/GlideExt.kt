@@ -10,25 +10,27 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
 fun RequestBuilder<Drawable>.onSuccess(action: (image: Bitmap) -> Unit) = this
-    .addListener(object : RequestListener<Drawable> {
+    .addListener(
+        object : RequestListener<Drawable> {
 
-        override fun onLoadFailed(
-            e: GlideException?,
-            model: Any?,
-            target: Target<Drawable>?,
-            isFirstResource: Boolean
-        ) = false
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ) = false
 
-        override fun onResourceReady(
-            resource: Drawable?,
-            model: Any?,
-            target: Target<Drawable>?,
-            dataSource: DataSource?,
-            isFirstResource: Boolean
-        ): Boolean {
-            resource?.toBitmap()?.let {
-                action.invoke(it)
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                resource?.toBitmap()?.let {
+                    action.invoke(it)
+                }
+                return false
             }
-            return false
         }
-    })
+    )

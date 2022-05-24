@@ -41,7 +41,7 @@ object ImageBindingAdapters {
         loadedListener: ((image: Bitmap) -> Unit)?
     ) {
         val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
-                "?quality=${quality.ordinal}"
+            "?quality=${quality.ordinal}"
         baseGlideImageRequest(imageView, url)
             .placeholder(circularProgressDrawable(imageView.context))
             .onSuccess { loadedListener?.invoke(it) }
@@ -52,7 +52,7 @@ object ImageBindingAdapters {
     @BindingAdapter("blurredImage")
     fun setBlurredImage(imageView: ImageView, id: Int) {
         val url = "${NetworkModule.COMICS_SERVER_URL}/comix/image/$id" +
-                "?quality=${Quality.PREVIEW.ordinal}"
+            "?quality=${Quality.PREVIEW.ordinal}"
         baseGlideImageRequest(imageView, url)
             .transform(centerBlurTransform())
             .into(imageView)

@@ -39,4 +39,6 @@
 
     <string name="input_field_is_empty_error">Поле не может быть пустым</string>
     <string name="translate_text_from_page">Перевести текст с изображения</string>
+    <string name="save">Сохранить</string>
+    <string name="comic_saved">Комикс сохранен в избранное</string>
 </resources>

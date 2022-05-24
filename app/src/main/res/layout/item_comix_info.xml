@@ -127,26 +127,15 @@
                 tools:rating="4.5" />
 
         <com.google.android.material.chip.Chip
-                android:id="@+id/comix_info_rate_chip"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/components_small_margin"
-                app:chipIcon="@drawable/ic_thumbs_up_down"
-                app:layout_constraintTop_toBottomOf="@id/comix_info_rating_bar"
-                app:layout_constraintStart_toStartOf="@id/start_guideline"
-                tools:text="Оценить" />
-
-        <com.google.android.material.chip.Chip
                 android:id="@+id/comix_info_save_chip"
                 style="@style/Widget.Material3.Chip.Assist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/components_small_margin"
+                android:text="@string/save"
                 android:onClick="@{() -> saveListener.invoke(comic)}"
                 app:chipIcon="@drawable/ic_bookmark"
-                app:layout_constraintTop_toTopOf="@id/comix_info_rate_chip"
-                app:layout_constraintStart_toEndOf="@id/comix_info_rate_chip"
+                app:layout_constraintTop_toBottomOf="@id/comix_info_rating_bar"
+                app:layout_constraintStart_toStartOf="@+id/start_guideline"
                 tools:text="Сохранить" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

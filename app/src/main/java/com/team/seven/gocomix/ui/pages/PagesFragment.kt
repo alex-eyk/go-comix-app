@@ -95,7 +95,6 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
     private fun handleTranslatedState(state: UiState<String>) {
         when (state) {
             is UiState.Success -> {
-                bottomSheetBehaviour.expand()
                 binding.comicTranslateBottomSheet?.text = state.value
             }
         }
