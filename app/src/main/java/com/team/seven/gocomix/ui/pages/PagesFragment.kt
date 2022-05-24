@@ -7,6 +7,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.data.entity.Page
 import com.team.seven.gocomix.databinding.FragmentComixPagesBinding
@@ -22,6 +23,12 @@ class PagesFragment : AbstractFragment<FragmentComixPagesBinding, PagesViewModel
     override val viewModel: PagesViewModel by viewModels()
 
     private val navArgs by navArgs<PagesFragmentArgs>()
+
+    private val bottomSheetBehaivour by lazy {
+        BottomSheetBehavior.from(
+            binding.comicTranslateBottomSheet!!.comixTranslatedTextLayout
+        )
+    }
 
     private val pagesAdapter = PagesAdapter().apply {
         loadedListener = {

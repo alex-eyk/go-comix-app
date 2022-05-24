@@ -95,5 +95,6 @@
         <include
                 android:id="@+id/comic_translate_bottom_sheet"
                 layout="@layout/item_comix_translate" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
