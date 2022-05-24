@@ -1,6 +1,5 @@
 package com.team.seven.gocomix.ui.auth.signin
 
-import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
@@ -74,20 +73,32 @@ class SignInFragment : AbstractAuthFragment<FragmentSignInBinding, SignInViewMod
                 )
             }
             is FirebaseAuthInvalidCredentialsException -> {
-                Snackbar.make(requireView(), "Ошибка входа, перепроверьте введенные данные",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка входа, перепроверьте введенные данные",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             is FirebaseAuthInvalidUserException -> {
-                Snackbar.make(requireView(), "Пользователь с данным логином удален",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Пользователь с данным логином удален",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             is FirebaseAuthRecentLoginRequiredException -> {
-                Snackbar.make(requireView(), "Ошибка, попробуйте ввести даанные ещё раз",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка, попробуйте ввести даанные ещё раз",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             is FirebaseAuthWebException -> {
-                Snackbar.make(requireView(), "Ошибка, попробуйте войти немного позже",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка, попробуйте войти немного позже",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             else -> {
                 Snackbar.make(requireView(), "Ошибка", Snackbar.LENGTH_SHORT).show()

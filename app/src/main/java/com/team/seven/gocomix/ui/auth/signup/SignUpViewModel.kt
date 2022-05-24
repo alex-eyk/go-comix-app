@@ -11,16 +11,20 @@ import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
 import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
 import com.team.seven.gocomix.ui.auth.exception.ShortPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
+
+    companion object {
+        private const val MIN_PASSWORD_LENGTH = 6
+    }
 
     private val _signUpState: MutableStateFlow<SignUpState> =
         MutableStateFlow(SignUpState.Loading)
@@ -39,7 +43,7 @@ class SignUpViewModel @Inject constructor(
             password.value.isEmpty() -> {
                 _signUpState.value = SignUpState.Failure(EmptyPasswordException())
             }
-            password.value.length<6 -> {
+            password.value.length < MIN_PASSWORD_LENGTH -> {
                 _signUpState.value = SignUpState.Failure(ShortPasswordException())
             }
             passwordConfirm.value.isEmpty() -> {

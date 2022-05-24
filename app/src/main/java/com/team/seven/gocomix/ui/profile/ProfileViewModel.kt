@@ -1,16 +1,11 @@
 package com.team.seven.gocomix.ui.profile
 
-import android.content.ContentValues
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.team.seven.gocomix.data.entity.Comic
-import com.team.seven.gocomix.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import java.lang.NullPointerException
-import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(

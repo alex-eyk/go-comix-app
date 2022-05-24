@@ -1,9 +1,8 @@
 package com.team.seven.gocomix.ui.auth.signup
 
-import android.content.ContentValues
 import android.util.Log
-import androidx.fragment.app.viewModels
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -11,10 +10,10 @@ import com.google.firebase.auth.FirebaseAuthWebException
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentSignUpBinding
 import com.team.seven.gocomix.ui.auth.AbstractAuthFragment
-import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
-import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
-import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
 import com.team.seven.gocomix.ui.auth.exception.DifPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.EmptyEmailException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordConfirmException
+import com.team.seven.gocomix.ui.auth.exception.EmptyPasswordException
 import com.team.seven.gocomix.ui.auth.exception.ShortPasswordException
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,17 +22,13 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
     layoutRes = R.layout.fragment_sign_up
 ) {
 
-    companion object {
-        private const val TAG = "SignUpFragment"
-    }
-
     override val viewModel: SignUpViewModel by viewModels()
 
     override fun onBindingCreated() {
         super.onBindingCreated()
         binding.viewModel = viewModel
         binding.apply {
-            registerEmailEditText.addTextChangedListener{
+            registerEmailEditText.addTextChangedListener {
                 registerEmailInputLayout.error = null
             }
             registerPasswordEditText.addTextChangedListener {
@@ -87,16 +82,25 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
                 )
             }
             is FirebaseAuthWebException -> {
-                Snackbar.make(requireView(), "Ошибка, попробуйте зарегестрироваться немного позже",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка, попробуйте зарегестрироваться немного позже",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             is FirebaseAuthUserCollisionException -> {
-                Snackbar.make(requireView(), "Пользователь с таким логином уже существует",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Пользователь с таким логином уже существует",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             is FirebaseAuthRecentLoginRequiredException -> {
-                Snackbar.make(requireView(), "Ошибка, попробуйте зарегистрироваться ещё раз",
-                    Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка, попробуйте зарегистрироваться ещё раз",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
             is ShortPasswordException -> {
                 binding.registerPasswordInputLayout.error = resources.getString(
@@ -104,7 +108,7 @@ class SignUpFragment : AbstractAuthFragment<FragmentSignUpBinding, SignUpViewMod
                 )
             }
             else -> {
-                Snackbar.make(requireView(),"Ошибка", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(), "Ошибка", Snackbar.LENGTH_SHORT).show()
                 Log.d(e.message, "e.message")
             }
         }

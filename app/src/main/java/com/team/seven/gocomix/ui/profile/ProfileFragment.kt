@@ -4,7 +4,6 @@ import androidx.fragment.app.viewModels
 import com.team.seven.gocomix.R
 import com.team.seven.gocomix.databinding.FragmentProfileBinding
 import com.team.seven.gocomix.ui.AbstractFragment
-import com.team.seven.gocomix.ui.UiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,5 +23,4 @@ class ProfileFragment : AbstractFragment<FragmentProfileBinding, ProfileViewMode
             viewModel.signOut()
         }
     }
-
 }
