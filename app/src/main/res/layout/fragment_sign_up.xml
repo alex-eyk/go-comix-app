@@ -45,26 +45,11 @@
                 app:layout_constraintBottom_toTopOf="@+id/btnRegister">
 
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/register_username_input_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/username">
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/register_username_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:maxLines="1"
-                        tools:text="login" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_email_input_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/components_medium_margin"
-                    android:hint="@string/username">
+                    android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/register_email_edit_text"
