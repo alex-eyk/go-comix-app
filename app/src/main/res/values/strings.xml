@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">GoComix</string>
+    <string name="menu_home">Главная</string>
+    <string name="menu_favourite">Избранное</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="comix_cover">Обложка комикса</string>
+    <string name="open_comix_description">Открыть описание комикса</string>
+    <string name="profile_image">Фото профиля</string>
+    <string name="please_rate_comix">Поставьте оценку и нажмите “оценить”. Ваши оценки комиксов очень важны для нас!</string>
+    <string name="rate">Оценить</string>
+    <string name="remove_favourite_comix">Удалить комикс из избранных</string>
+    <string name="add_favourite_comix">Добавить комикс в избранное</string>
+    <string name="rate_comix">Оценить комикс</string>
+    <string name="show_more_actions">Показать больше возможностей</string>
+    <string name="remove">Удалить</string>
+    <string name="info">Информация</string>
+    <string name="logout">Выйти из аккаута</string>
+    <string name="edit_profile">Редактировать данные аккаунта</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="cancel_changes">Отменить изменения</string>
+    <string name="edit_profile_image">Изменить изображение профиля</string>
+    <string name="nickname">Никнейм</string>
+    <string name="email">Адрес эл. почты</string>
+    <string name="about_me">О себе</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="password_again">Пароль повторно</string>
+    <string name="personal_account_text">Личный кабинет</string>
+    <string name="login_button_text">Вход</string>
+    <string name="logout_button_text">Выход</string>
+    <string name="login_prompt">Выполните вход</string>
+    <string name="welcome_message">Привет, %1$s!</string>
+    <string name="login_unsuccessful_msg">Вход не выполнен</string>
+    <string name="login_successful_msg">Вход успешно выполнен</string>
+    <string name="long_string">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboret dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="login_using_google">Войти с Google</string>
+
+    <string name="input_field_is_empty_error">Поле не может быть пустым</string>
+    <string name="translate_text_from_page">Перевести текст с изображения</string>
+    <string name="save">Сохранить</string>
+    <string name="comic_saved">Комикс сохранен в избранное</string>
+    <string name="different_password">Пароли не совпадают</string>
+    <string name="short_password">Пароль должен содержать как минимум 6 символов</string>
 </resources>

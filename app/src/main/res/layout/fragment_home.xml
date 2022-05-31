@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/comics_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/comics_progress_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:indicatorColor="?attr/colorPrimaryVariant"
+                android:elevation="1dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comics_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:context=".ui.comics.home.HomeFragment" />
+
+        <View
+                android:id="@+id/comics_bottom_sheet_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                android:background="@color/strong_fogging"/>
+
+        <include
+                android:id="@+id/comic_info_bottom_sheet"
+                layout="@layout/item_comix_info" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
